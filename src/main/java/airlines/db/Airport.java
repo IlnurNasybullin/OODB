@@ -4,20 +4,18 @@ import java.time.ZoneId;
 
 public class Airport {
 
-    private final String ID;
+    private final String airportID;
+
     private String name;
     private String city;
     private ZoneId timeZone;
 
-    public Airport(String ID, String name, String city, ZoneId timeZone) {
-        this.ID = ID;
-        this.name = name;
-        this.city = city;
-        this.timeZone = timeZone;
+    public Airport(String airportID) {
+        this.airportID = airportID;
     }
 
-    public String getID() {
-        return ID;
+    public String getAirportID() {
+        return airportID;
     }
 
     public String getName() {
@@ -30,5 +28,17 @@ public class Airport {
 
     public ZoneId getTimeZone() {
         return timeZone;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public void setTimeZone(ZoneId timeZone) {
+        this.timeZone = timeZone;
     }
 }

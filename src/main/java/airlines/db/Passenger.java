@@ -11,11 +11,8 @@ public class Passenger {
     private Address address;
     private String phoneNumber;
 
-    public Passenger(String passportID, FullName fullName, Address address, String phoneNumber) {
+    public Passenger(String passportID) {
         this.passportID = passportID;
-        this.fullName = fullName;
-        this.address = address;
-        this.phoneNumber = phoneNumber;
     }
 
     public String getPassportID() {
@@ -32,5 +29,17 @@ public class Passenger {
 
     public String getPhoneNumber() {
         return phoneNumber;
+    }
+
+    public void setFullName(FullName fullName) {
+        this.fullName = fullName;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 }

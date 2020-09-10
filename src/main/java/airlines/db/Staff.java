@@ -13,12 +13,8 @@ public class Staff {
 
     private StaffPosition position;
 
-    public Staff(String ID, FullName fullName, Address address, int flightHours, StaffPosition position) {
+    public Staff(String ID) {
         this.ID = ID;
-        this.fullName = fullName;
-        this.address = address;
-        this.flightHours = flightHours;
-        this.position = position;
     }
 
     public String getID() {
@@ -39,5 +35,21 @@ public class Staff {
 
     public StaffPosition getPosition() {
         return position;
+    }
+
+    public void setFullName(FullName fullName) {
+        this.fullName = fullName;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
+    public void setFlightHours(int flightHours) {
+        this.flightHours = flightHours;
+    }
+
+    public void setPosition(StaffPosition position) {
+        this.position = position;
     }
 }

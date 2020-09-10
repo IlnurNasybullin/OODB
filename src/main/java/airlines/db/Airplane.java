@@ -1,58 +1,41 @@
 package airlines.db;
 
-import java.time.ZonedDateTime;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
+import java.time.LocalDate;
 
 public class Airplane {
-    private final String ID;
+    private final String flightNumber;
     private String model;
 
-    private ZonedDateTime manufactureDate;
-    private int operationYearPeriod;
+    private LocalDate manufactureDate;
+    private LocalDate operationData;
 
-    private boolean isReady;
-    private List<Staff> staffs;
+    private TechnicalPassport technicalPassport;
 
-    public Airplane(String id, String model, ZonedDateTime manufactureDate, int operationYearPeriod, boolean isReady) {
-        ID = id;
-        this.model = model;
-        this.manufactureDate = manufactureDate;
-        this.operationYearPeriod = operationYearPeriod;
-        this.isReady = isReady;
-        this.staffs = new ArrayList<>();
+    public Airplane(String flightNumber) {
+        this.flightNumber = flightNumber;
     }
 
-    public String getID() {
-        return ID;
+    public void setModel(String model) {
+        this.model = model;
+    }
+
+    public void setManufactureDate(LocalDate manufactureDate) {
+        this.manufactureDate = manufactureDate;
+    }
+
+    public void setOperationData(LocalDate operationData) {
+        this.operationData = operationData;
+    }
+
+    public void setTechnicalPassport(TechnicalPassport technicalPassport) {
+        this.technicalPassport = technicalPassport;
+    }
+
+    public String getFlightNumber() {
+        return flightNumber;
     }
 
     public String getModel() {
         return model;
-    }
-
-    public ZonedDateTime getManufactureDate() {
-        return manufactureDate;
-    }
-
-    public int getOperationYearPeriod() {
-        return operationYearPeriod;
-    }
-
-    public boolean isReady() {
-        return isReady;
-    }
-
-    public List<Staff> getStaffs() {
-        return new ArrayList<>(getStaffs());
-    }
-
-    public boolean addStaff(Staff staff) {
-        return this.staffs.add(staff);
-    }
-
-    public boolean addStaffs(Collection<Staff> staffs) {
-        return this.staffs.addAll(staffs);
     }
 }

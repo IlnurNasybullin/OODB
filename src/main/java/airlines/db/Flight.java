@@ -2,30 +2,32 @@ package airlines.db;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 public class Flight {
 
-    private final String ID;
-    private LocalDateTime start;
-    private LocalDateTime end;
+    private final Route route;
+
+    private final LocalDateTime start;
+    private final LocalDateTime end;
+
+    private LocalDateTime realStartTime;
+    private LocalDateTime realEndTime;
+
     private boolean successful;
 
-    private List<Passenger> passengers;
-    private Airplane airplane;
+    private FlightPassport flightPassport;
 
-    public Flight(String id, LocalDateTime start, LocalDateTime end, boolean successful, Airplane airplane) {
-        ID = id;
+    private List<Passenger> passengers;
+
+    public Flight(Route route, LocalDateTime start, LocalDateTime end) {
+        this.route = route;
         this.start = start;
         this.end = end;
-        this.successful = successful;
-        this.airplane = airplane;
-        this.passengers = new ArrayList<>();
     }
 
-    public String getID() {
-        return ID;
+    public Route getRoute() {
+        return route;
     }
 
     public LocalDateTime getStart() {
@@ -36,23 +38,39 @@ public class Flight {
         return end;
     }
 
+    public LocalDateTime getRealStartTime() {
+        return realStartTime;
+    }
+
+    public LocalDateTime getRealEndTime() {
+        return realEndTime;
+    }
+
     public boolean isSuccessful() {
         return successful;
+    }
+
+    public FlightPassport getFlightPassport() {
+        return flightPassport;
     }
 
     public List<Passenger> getPassengers() {
         return new ArrayList<>(passengers);
     }
 
-    public Airplane getAirplane() {
-        return airplane;
+    public void setRealStartTime(LocalDateTime realStartTime) {
+        this.realStartTime = realStartTime;
     }
 
-    public boolean addPassenger(Passenger passenger) {
-        return this.passengers.add(passenger);
+    public void setRealEndTime(LocalDateTime realEndTime) {
+        this.realEndTime = realEndTime;
     }
 
-    public boolean addPassengers(Collection<Passenger> passengers) {
-        return this.passengers.addAll(passengers);
+    public void setSuccessful(boolean successful) {
+        this.successful = successful;
+    }
+
+    public void setFlightPassport(FlightPassport flightPassport) {
+        this.flightPassport = flightPassport;
     }
 }
