@@ -113,4 +113,18 @@ public class Flight {
     public int hashCode() {
         return Objects.hash(route, start, end);
     }
+
+    @Override
+    public String toString() {
+        return "Flight{" +
+                "route=" + route +
+                ", start=" + start +
+                ", end=" + end +
+                ", realStartTime=" + realStartTime +
+                ", realEndTime=" + realEndTime +
+                ", successful=" + successful +
+                ", flightPassport=" + flightPassport +
+                ", plainTickets=" + plainTickets +
+                '}';
+    }
 }
