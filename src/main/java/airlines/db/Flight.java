@@ -2,7 +2,9 @@ package airlines.db;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
+import java.util.Objects;
 
 public class Flight {
 
@@ -18,12 +20,21 @@ public class Flight {
 
     private FlightPassport flightPassport;
 
-    private List<Passenger> passengers;
+    private List<PlainTicket> plainTickets;
 
     public Flight(Route route, LocalDateTime start, LocalDateTime end) {
+        checkData(start, end);
         this.route = route;
         this.start = start;
         this.end = end;
+    }
+
+    private void checkData(LocalDateTime firstDateTime, LocalDateTime secondDateTime) {
+        if (secondDateTime.isAfter(firstDateTime)) {
+            return;
+        }
+
+        throw new IllegalArgumentException("Даты расположены не в хронологическом порядке!");
     }
 
     public Route getRoute() {
@@ -54,15 +65,13 @@ public class Flight {
         return flightPassport;
     }
 
-    public List<Passenger> getPassengers() {
-        return new ArrayList<>(passengers);
+    public List<PlainTicket> getPlainTickets() {
+        return new ArrayList<>(plainTickets);
     }
 
-    public void setRealStartTime(LocalDateTime realStartTime) {
+    public void setRealTimes(LocalDateTime realStartTime, LocalDateTime realEndTime) {
+        checkData(realStartTime, realEndTime);
         this.realStartTime = realStartTime;
-    }
-
-    public void setRealEndTime(LocalDateTime realEndTime) {
         this.realEndTime = realEndTime;
     }
 
@@ -72,5 +81,36 @@ public class Flight {
 
     public void setFlightPassport(FlightPassport flightPassport) {
         this.flightPassport = flightPassport;
+    }
+
+    public boolean addPlainTicket(PlainTicket plainTicket) {
+        return this.plainTickets.add(plainTicket);
+    }
+
+    public boolean addPlainTickets(Collection<PlainTicket> plainTickets) {
+        return this.plainTickets.addAll(plainTickets);
+    }
+
+    public boolean removePlainTicket(PlainTicket plainTicket) {
+        return this.plainTickets.remove(plainTicket);
+    }
+
+    public boolean removePlainTickets(Collection<PlainTicket> plainTickets) {
+        return this.plainTickets.removeAll(plainTickets);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Flight flight = (Flight) o;
+        return route.equals(flight.route) &&
+                start.equals(flight.start) &&
+                end.equals(flight.end);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(route, start, end);
     }
 }

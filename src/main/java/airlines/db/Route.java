@@ -1,15 +1,11 @@
 package airlines.db;
 
-import java.time.LocalTime;
+import java.util.Objects;
 
 public class Route {
 
     private final Airport from;
     private final Airport to;
-
-    private double cost;
-
-    private LocalTime duration;
 
     public Route(Airport from, Airport to) {
         this.from = from;
@@ -24,19 +20,17 @@ public class Route {
         return to;
     }
 
-    public double getCost() {
-        return cost;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Route route = (Route) o;
+        return from.equals(route.from) &&
+                to.equals(route.to);
     }
 
-    public LocalTime getDuration() {
-        return duration;
-    }
-
-    public void setCost(double cost) {
-        this.cost = cost;
-    }
-
-    public void setDuration(LocalTime duration) {
-        this.duration = duration;
+    @Override
+    public int hashCode() {
+        return Objects.hash(from, to);
     }
 }

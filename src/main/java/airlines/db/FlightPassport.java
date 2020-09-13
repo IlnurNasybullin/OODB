@@ -3,6 +3,7 @@ package airlines.db;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Objects;
 
 public class FlightPassport {
 
@@ -14,6 +15,7 @@ public class FlightPassport {
     public FlightPassport(String flightPassportID, List<Staff> staffs) {
         this.flightPassportID = flightPassportID;
         this.staffs = staffs;
+        this.staffs = new ArrayList<>();
     }
 
     public String getFlightPassportID() {
@@ -54,5 +56,18 @@ public class FlightPassport {
 
     public boolean removeStaffs(Collection<Staff> staffs) {
         return this.staffs.removeAll(staffs);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        FlightPassport that = (FlightPassport) o;
+        return flightPassportID.equals(that.flightPassportID);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(flightPassportID);
     }
 }

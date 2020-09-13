@@ -1,6 +1,7 @@
 package airlines.db;
 
 import java.time.ZoneId;
+import java.util.Objects;
 
 public class Airport {
 
@@ -40,5 +41,18 @@ public class Airport {
 
     public void setTimeZone(ZoneId timeZone) {
         this.timeZone = timeZone;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Airport airport = (Airport) o;
+        return airportID.equals(airport.airportID);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(airportID);
     }
 }
