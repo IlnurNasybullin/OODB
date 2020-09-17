@@ -1,35 +1,54 @@
 import airlines.db.Airport;
 import airlines.db.Flight;
 import airlines.db.Route;
-import jsonFileIO.BufferedJsonReader;
-import jsonFileIO.BufferedJsonWriter;
-import jsonFileIO.JsonReader;
-import jsonFileIO.JsonWriter;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.reflect.TypeToken;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.StandardOpenOption;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        Flight flight = getFlight();
+        List<Flight> flightList = getFlights(10);
         File file = new File("./src/main/resources/flights.txt");
-        try(JsonWriter<Flight> writer = new BufferedJsonWriter<>(file, StandardOpenOption.TRUNCATE_EXISTING)) {
-            writer.writeObject(flight);
-        }
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        String JSON = gson.toJson(flightList);
 
-        try(JsonReader<Flight> reader = new BufferedJsonReader<>(file, Flight.class)) {
-            for (Flight f: reader.readAllObjects()) {
-                System.out.println(f);
-            }
-        }
+        Files.write(file.toPath(), JSON.getBytes(), StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
+
+        String JSONfromFile = Files.readString(file.toPath());
+
+        List<Flight> flights = gson.fromJson(JSONfromFile, new TypeToken<List<Flight>>(){}.getType());
+        flights.sort(Comparator.comparing(Flight::getStart));
+        flights.forEach(System.out::println);
     }
 
-    private static Flight getFlight() {
-        LocalDateTime start = LocalDateTime.of(2020, 8, 14, 15, 30);
-        LocalDateTime end = start.plusHours(7);
-        return new Flight(getRoute(), start, end);
+    private static List<Flight> getFlights(int count) {
+        List<Flight> flights = new ArrayList<>(count);
+        Route route = getRoute();
+
+        for (int i = 0; i < count; i++) {
+            LocalDateTime start = getRandomDate();
+            LocalDateTime end = start.plusHours(7);
+
+            flights.add(new Flight(route, start, end));
+        }
+
+        return flights;
+    }
+
+    private static LocalDateTime getRandomDate() {
+        int day = (int) (Math.random() * 30 + 1);
+        int hour = (int) (Math.random() * 5 + 8);
+        return LocalDateTime.of(2020, 8, day, hour, 0, 0);
     }
 
     private static Route getRoute() {
