@@ -1,0 +1,69 @@
+<list>
+  <flights>
+    <route>
+      <from>
+        <airportID>UL56</airportID>
+      </from>
+      <to>
+        <airportID>RU01</airportID>
+      </to>
+    </route>
+    <start>2020-08-27T10:00:00</start>
+    <end>2020-08-27T17:00:00</end>
+    <successful>false</successful>
+  </flights>
+  <flights>
+    <route reference="../../flights/route"/>
+    <start>2020-08-29T08:00:00</start>
+    <end>2020-08-29T15:00:00</end>
+    <successful>false</successful>
+  </flights>
+  <flights>
+    <route reference="../../flights/route"/>
+    <start>2020-08-28T09:00:00</start>
+    <end>2020-08-28T16:00:00</end>
+    <successful>false</successful>
+  </flights>
+  <flights>
+    <route reference="../../flights/route"/>
+    <start>2020-08-11T09:00:00</start>
+    <end>2020-08-11T16:00:00</end>
+    <successful>false</successful>
+  </flights>
+  <flights>
+    <route reference="../../flights/route"/>
+    <start>2020-08-15T09:00:00</start>
+    <end>2020-08-15T16:00:00</end>
+    <successful>false</successful>
+  </flights>
+  <flights>
+    <route reference="../../flights/route"/>
+    <start>2020-08-17T12:00:00</start>
+    <end>2020-08-17T19:00:00</end>
+    <successful>false</successful>
+  </flights>
+  <flights>
+    <route reference="../../flights/route"/>
+    <start>2020-08-06T12:00:00</start>
+    <end>2020-08-06T19:00:00</end>
+    <successful>false</successful>
+  </flights>
+  <flights>
+    <route reference="../../flights/route"/>
+    <start>2020-08-29T10:00:00</start>
+    <end>2020-08-29T17:00:00</end>
+    <successful>false</successful>
+  </flights>
+  <flights>
+    <route reference="../../flights/route"/>
+    <start>2020-08-22T08:00:00</start>
+    <end>2020-08-22T15:00:00</end>
+    <successful>false</successful>
+  </flights>
+  <flights>
+    <route reference="../../flights/route"/>
+    <start>2020-08-22T09:00:00</start>
+    <end>2020-08-22T16:00:00</end>
+    <successful>false</successful>
+  </flights>
+</list>
