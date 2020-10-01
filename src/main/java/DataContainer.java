@@ -1,6 +1,7 @@
 import airlines.db.Airport;
 import airlines.db.Flight;
 import airlines.db.Route;
+import airlines.utilData.AirportICAO;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -28,10 +29,10 @@ public class DataContainer {
     }
 
     private static Route getRoute() {
-        Airport from = new Airport("UL56");
-        Airport to = new Airport("RU01");
+        Airport from = new Airport(AirportICAO.of("ULAS"));
+        Airport to = new Airport(AirportICAO.of("RUUD"));
 
-        Route route = new Route(from, to);
+        Route route = Route.of(from, to);
 
         return route;
     }

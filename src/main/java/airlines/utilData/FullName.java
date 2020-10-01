@@ -8,9 +8,20 @@ public class FullName {
     private String name;
     private String fatherName;
 
-    public FullName(String familyName, String name, String fatherName) {
+    public FullName(String familyName, String name) {
         this.familyName = familyName;
         this.name = name;
+    }
+
+    public void setFamilyName(String familyName) {
+        this.familyName = familyName;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setFatherName(String fatherName) {
         this.fatherName = fatherName;
     }
 

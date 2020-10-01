@@ -1,46 +1,40 @@
 package airlines.db;
 
+import airlines.utilData.AirportICAO;
+import airlines.utilData.IATA;
+import airlines.utilData.geographic.GeographicPosition;
+
 import java.time.ZoneId;
 import java.util.Objects;
 
 public class Airport {
 
-    private final String airportID;
+    private final AirportICAO icaoID;
+    private IATA iataID;
+    private GeographicPosition position;
 
-    private String name;
-    private String city;
-    private ZoneId timeZone;
-
-    public Airport(String airportID) {
-        this.airportID = airportID;
+    public Airport(AirportICAO icaoID) {
+        this.icaoID = icaoID;
     }
 
-    public String getAirportID() {
-        return airportID;
+    public AirportICAO getIcaoID() {
+        return icaoID;
     }
 
-    public String getName() {
-        return name;
+    public IATA getIataID() {
+        return iataID;
     }
 
-    public String getCity() {
-        return city;
+    public void setIataID(IATA iataID) {
+        this.iataID = iataID;
     }
 
-    public ZoneId getTimeZone() {
-        return timeZone;
+    public GeographicPosition getPosition() {
+        return position;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public void setTimeZone(ZoneId timeZone) {
-        this.timeZone = timeZone;
+    public void setPosition(GeographicPosition position) {
+        this.position = position;
     }
 
     @Override
@@ -48,11 +42,11 @@ public class Airport {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Airport airport = (Airport) o;
-        return airportID.equals(airport.airportID);
+        return icaoID.equals(airport.icaoID);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(airportID);
+        return Objects.hash(icaoID);
     }
 }

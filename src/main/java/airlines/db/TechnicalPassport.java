@@ -1,22 +1,23 @@
 package airlines.db;
 
-import java.time.LocalDate;
+import airlines.utilData.TechnicalPassportID;
+
 import java.time.ZonedDateTime;
 import java.util.Objects;
 
 public class TechnicalPassport {
 
-    private final String technicalPassportID;
+    private final TechnicalPassportID ID;
 
     private ZonedDateTime lastCheckData;
     private boolean isReady;
 
-    public TechnicalPassport(String technicalPassportID) {
-        this.technicalPassportID = technicalPassportID;
+    public TechnicalPassport(TechnicalPassportID ID) {
+        this.ID = ID;
     }
 
-    public String getTechnicalPassportID() {
-        return technicalPassportID;
+    public TechnicalPassportID getID() {
+        return ID;
     }
 
     public ZonedDateTime getLastCheckData() {
@@ -40,11 +41,11 @@ public class TechnicalPassport {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         TechnicalPassport that = (TechnicalPassport) o;
-        return technicalPassportID.equals(that.technicalPassportID);
+        return ID.equals(that.ID);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(technicalPassportID);
+        return Objects.hash(ID);
     }
 }
