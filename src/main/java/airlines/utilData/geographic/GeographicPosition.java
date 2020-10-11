@@ -8,8 +8,8 @@ public class GeographicPosition {
 
     private final GeographicCoordinates coordinates;
     private ZoneId timeZone;
-    private String city;
     private String country;
+    private String city;
     private Length altitude;
 
     public GeographicPosition(GeographicCoordinates coordinates) {

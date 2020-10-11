@@ -2,14 +2,13 @@ package airlines.db;
 
 import airlines.utilData.TechnicalPassportID;
 
-import java.time.ZonedDateTime;
+import java.time.OffsetDateTime;
 import java.util.Objects;
 
 public class TechnicalPassport {
 
     private final TechnicalPassportID ID;
-
-    private ZonedDateTime lastCheckData;
+    private OffsetDateTime lastCheckDate;
     private boolean isReady;
 
     public TechnicalPassport(TechnicalPassportID ID) {
@@ -20,16 +19,16 @@ public class TechnicalPassport {
         return ID;
     }
 
-    public ZonedDateTime getLastCheckData() {
-        return lastCheckData;
+    public OffsetDateTime getLastCheckDate() {
+        return lastCheckDate;
     }
 
     public boolean isReady() {
         return isReady;
     }
 
-    public void setLastCheckData(ZonedDateTime lastCheckData) {
-        this.lastCheckData = lastCheckData;
+    public void setLastCheckDate(OffsetDateTime lastCheckDate) {
+        this.lastCheckDate = lastCheckDate;
     }
 
     public void setReady(boolean ready) {

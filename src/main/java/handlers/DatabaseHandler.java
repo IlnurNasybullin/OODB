@@ -35,7 +35,7 @@ public class DatabaseHandler implements Closeable {
         StringBuffer valuesString = new StringBuffer();
         for (Map.Entry<String, String> entry: values.entrySet()) {
             columnNames.append(String.format("%s, ", entry.getKey()));
-            valuesString.append(String.format("'%s', ", entry.getValue()));
+            valuesString.append(String.format("%s, ", entry.getValue()));
         }
 
         if (!values.isEmpty()) {
@@ -45,13 +45,9 @@ public class DatabaseHandler implements Closeable {
             valuesString.delete(valuesLength - 2, valuesLength);
         }
 
-        String query = String.format("INSERT INTO %s (%s) VALUES (%s)", tableName, columnNames.toString(), valuesString.toString());
-        return executeUpdate(query);
-    }
-
-    private int executeUpdate(String query) throws SQLException {
-        System.out.println(query);
+        String query = String.format("INSERT INTO %s (%s) VALUES (?::json)", tableName, columnNames.toString());
         PreparedStatement statement = connection.prepareStatement(query);
+        statement.setString(1, valuesString.toString());
         return statement.executeUpdate();
     }
 

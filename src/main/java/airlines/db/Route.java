@@ -44,4 +44,12 @@ public class Route {
     public int hashCode() {
         return Objects.hash(from, to);
     }
+
+    @Override
+    public String toString() {
+        return "Route{" +
+                "from=" + from +
+                ", to=" + to +
+                '}';
+    }
 }

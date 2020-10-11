@@ -4,7 +4,6 @@ import airlines.utilData.AirportICAO;
 import airlines.utilData.IATA;
 import airlines.utilData.geographic.GeographicPosition;
 
-import java.time.ZoneId;
 import java.util.Objects;
 
 public class Airport {
@@ -48,5 +47,14 @@ public class Airport {
     @Override
     public int hashCode() {
         return Objects.hash(icaoID);
+    }
+
+    @Override
+    public String toString() {
+        return "Airport{" +
+                "icaoID=" + icaoID +
+                ", iataID=" + iataID +
+                ", position=" + position +
+                '}';
     }
 }

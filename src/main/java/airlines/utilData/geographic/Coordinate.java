@@ -67,6 +67,11 @@ public abstract class Coordinate {
         return seconds;
     }
 
+    public double getFullDegrees() {
+        double min = (double) (minutes) + seconds / Coordinate.MINUTES_TO_SECONDS;
+        return (double) (degrees) + min / Coordinate.DEGREE_TO_MINUTES;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
