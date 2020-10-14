@@ -24,12 +24,15 @@ public class Main {
         try(DatabaseHandler handler = new DatabaseHandler()) {
             RouteDAO dao = new RouteDAO();
             Connection connection = handler.getConnection();
-            System.out.println(dao.insertRoutes(connection, routeSet));
-            List<Route> routes = dao.selectRoutes(handler.getConnection());
-            for (Route route : routes) {
-                System.out.println(route);
-            }
+            testOnSelect(dao, connection);
+            testOnSelect(dao, connection);
         }
+    }
+
+    private static void testOnSelect(RouteDAO dao, Connection connection) throws SQLException {
+        long time = System.nanoTime();
+        System.out.println(dao.selectRoutes(connection).size());
+        System.out.println(System.nanoTime() - time);
     }
 
     private static Set<Route> readFromFile() throws IOException {
