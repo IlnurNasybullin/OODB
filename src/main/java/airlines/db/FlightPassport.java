@@ -1,15 +1,25 @@
 package airlines.db;
 
+import lab_6.annotations.Column;
+import lab_6.annotations.Entity;
+import lab_6.annotations.OneToMany;
+import lab_6.annotations.OneToOne;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
-
+@Entity
 public class FlightPassport {
-
+    @Column
     private final String flightPassportID;
+    @Column
+    @OneToOne
     private Airplane airplane;
+    @Column
     private String operatedCompany;
+    @Column
+    @OneToMany
     private List<Staff> staffs;
 
     public FlightPassport(String flightPassportID, List<Staff> staffs) {

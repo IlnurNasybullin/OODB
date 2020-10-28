@@ -1,14 +1,18 @@
 package airlines.db;
 
 import airlines.utilData.TechnicalPassportID;
+import lab_6.annotations.Column;
+import lab_6.annotations.Entity;
 
 import java.time.OffsetDateTime;
 import java.util.Objects;
-
+@Entity
 public class TechnicalPassport {
-
+    @Column
     private final TechnicalPassportID ID;
+    @Column
     private OffsetDateTime lastCheckDate;
+    @Column
     private boolean isReady;
 
     public TechnicalPassport(TechnicalPassportID ID) {

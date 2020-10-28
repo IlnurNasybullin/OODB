@@ -1,19 +1,31 @@
 package airlines.db;
 
+import lab_6.annotations.Column;
+import lab_6.annotations.Entity;
+import lab_6.annotations.OneToOne;
+
 import java.time.LocalDate;
 import java.util.Objects;
 import java.util.function.BiPredicate;
 
+@Entity
 public class Airplane {
+    @Column
     private final String registrationNumber;
+    @Column
     private String name;
+    @Column
     private String airlineName;
-
+    @Column
     private LocalDate rollingDate;
+    @Column
     private LocalDate maidenFlightDate;
+    @Column
     private LocalDate registrationDate;
-
+    @Column
     private LocalDate nearestOperationDate;
+    @Column
+    @OneToOne
     private TechnicalPassport technicalPassport;
 
     public Airplane(String registrationNumber) {

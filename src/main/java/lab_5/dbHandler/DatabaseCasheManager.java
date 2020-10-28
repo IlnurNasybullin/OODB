@@ -3,29 +3,29 @@ package lab_5.dbHandler;
 import java.util.HashMap;
 import java.util.Map;
 
-public class DatabaseCashManager {
+public class DatabaseCasheManager {
 
-    private final static Map<Query, Object> queryCash;
+    private final static Map<Query, Object> queryCashe;
 
     static {
-        queryCash = new HashMap<>();
+        queryCashe = new HashMap<>();
     }
 
     public static Object put(Query query, Object result) {
         update(query);
-        return queryCash.put(query, result);
+        return queryCashe.put(query, result);
     }
 
     public static void update(Query query) {
-        queryCash.keySet().removeIf(q -> q.isExcludingQuery(query));
+        queryCashe.keySet().removeIf(q -> q.isExcludingQuery(query));
     }
 
     public static void clear() {
-        queryCash.clear();
+        queryCashe.clear();
     }
 
     public static Object getOrDefault(Query query, Object def) {
-        return queryCash.getOrDefault(query, def);
+        return queryCashe.getOrDefault(query, def);
     }
 
 }

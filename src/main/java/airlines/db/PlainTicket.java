@@ -1,15 +1,23 @@
 package airlines.db;
 
-import airlines.utilData.TicketType;
+import lab_6.annotations.Column;
+import lab_6.annotations.Entity;
+import lab_6.annotations.ManyToOne;
 
 import java.util.Objects;
-
+@Entity
 public class PlainTicket {
-
+    @Column
     private final String ticketID;
+    @Column
+    @ManyToOne
     private TicketType ticketType;
+    @Column
     private double cost;
+    @Column
     private String place;
+    @Column
+    @ManyToOne
     private Passenger passenger;
 
     public PlainTicket(String ticketID) {

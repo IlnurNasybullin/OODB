@@ -2,17 +2,23 @@ package airlines.db;
 
 import airlines.utilData.Address;
 import airlines.utilData.FullName;
-import airlines.utilData.StaffPosition;
+import lab_6.annotations.Column;
+import lab_6.annotations.Entity;
+import lab_6.annotations.ManyToOne;
 
 import java.util.Objects;
-
+@Entity
 public class Staff {
-
+    @Column
     private final String passportID;
+    @Column
     private FullName fullName;
+    @Column
     private Address address;
+    @Column
     private int flightHours;
-
+    @Column
+    @ManyToOne
     private StaffPosition position;
 
     public Staff(String passportID) {

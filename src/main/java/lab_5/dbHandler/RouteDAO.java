@@ -3,7 +3,6 @@ package lab_5.dbHandler;
 import airlines.db.Route;
 import lab_5.db.RoutePGObject;
 
-import javax.xml.crypto.Data;
 import java.sql.*;
 import java.util.*;
 
@@ -38,7 +37,7 @@ public class RouteDAO {
 
     public int insertRoutes(Connection connection, Collection<Route> routes) throws SQLException {
         Query query = insertQueryBuilder.createQuery();
-        DatabaseCashManager.update(query);
+        DatabaseCasheManager.update(query);
         String insertQuery = prepareInsertCollectionQuery(routes);
 
         Statement statement = connection.createStatement();
@@ -65,7 +64,7 @@ public class RouteDAO {
 
     public List<Route> selectRoutes(Connection connection) throws SQLException {
         Query query = selectQueryBuilder.setQuery(selectQuery).createQuery();
-        List<Route> routes = (List<Route>) DatabaseCashManager.getOrDefault(query, null);
+        List<Route> routes = (List<Route>) DatabaseCasheManager.getOrDefault(query, null);
         if (routes != null) {
             return routes;
         }
@@ -88,12 +87,12 @@ public class RouteDAO {
             routes.add(pgObject.getObject());
         }
 
-        DatabaseCashManager.put(query, routes);
+        DatabaseCasheManager.put(query, routes);
         return routes;
     }
 
     public int updateAltitudeByCity(Connection connection, double altitude, String city) throws SQLException {
-        DatabaseCashManager.update(updateAltitudeByCityQueryBuilder.createQuery());
+        DatabaseCasheManager.update(updateAltitudeByCityQueryBuilder.createQuery());
         Set<Integer> id = getUpdateAltitudeByCityID
                 (connection, altitude, city, tableName, columnName, from, geographicPosition, TableData.altitude, length, columnName, from,
                         geographicPosition, TableData.city, ID);

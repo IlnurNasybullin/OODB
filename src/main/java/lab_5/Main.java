@@ -15,7 +15,6 @@ import java.nio.file.Paths;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.time.ZoneId;
-import java.util.List;
 import java.util.Set;
 
 public class Main {
@@ -24,8 +23,9 @@ public class Main {
         try(DatabaseHandler handler = new DatabaseHandler()) {
             RouteDAO dao = new RouteDAO();
             Connection connection = handler.getConnection();
+            dao.insertRoutes(connection, routeSet);
             testOnSelect(dao, connection);
-            testOnSelect(dao, connection);
+            dao.updateAltitudeByCity(connection, 618, "Sao Filipe Fogo Island");
         }
     }
 

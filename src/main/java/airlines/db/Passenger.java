@@ -2,15 +2,19 @@ package airlines.db;
 
 import airlines.utilData.Address;
 import airlines.utilData.FullName;
+import lab_6.annotations.Column;
+import lab_6.annotations.Entity;
 
 import java.util.Objects;
-
+@Entity
 public class Passenger {
-
+    @Column
     private final String passportID;
+    @Column
     private FullName fullName;
-
+    @Column
     private Address address;
+    @Column
     private String phoneNumber;
 
     public Passenger(String passportID) {

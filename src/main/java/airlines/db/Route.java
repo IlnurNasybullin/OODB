@@ -1,10 +1,17 @@
 package airlines.db;
 
+import lab_6.annotations.Column;
+import lab_6.annotations.Entity;
+import lab_6.annotations.ManyToOne;
+
 import java.util.Objects;
-
+@Entity
 public class Route {
-
+    @Column
+    @ManyToOne
     private final Airport from;
+    @Column
+    @ManyToOne
     private final Airport to;
 
     public static Route of(Airport from, Airport to) {

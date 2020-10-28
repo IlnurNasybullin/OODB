@@ -3,13 +3,18 @@ package airlines.db;
 import airlines.utilData.AirportICAO;
 import airlines.utilData.IATA;
 import airlines.utilData.geographic.GeographicPosition;
+import lab_6.annotations.Column;
+import lab_6.annotations.Entity;
 
 import java.util.Objects;
 
+@Entity
 public class Airport {
-
+    @Column
     private final AirportICAO icaoID;
+    @Column
     private IATA iataID;
+    @Column
     private GeographicPosition position;
 
     public Airport(AirportICAO icaoID) {

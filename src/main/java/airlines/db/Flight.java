@@ -1,5 +1,7 @@
 package airlines.db;
 
+import lab_6.annotations.*;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -7,20 +9,26 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
 
+@Entity
 public class Flight {
-
+    @Column
+    @ManyToOne
     private final Route route;
-
+    @Column
     private final LocalDateTime start;
+    @Column
     private final LocalDateTime end;
-
+    @Column
     private LocalDateTime realStartTime;
+    @Column
     private LocalDateTime realEndTime;
-
+    @Column
     private boolean successful;
-
+    @Column
+    @OneToOne
     private FlightPassport flightPassport;
-
+    @Column
+    @OneToMany
     private List<PlainTicket> plainTickets;
 
     public Flight(Route route, LocalDateTime start, LocalDateTime end) {
