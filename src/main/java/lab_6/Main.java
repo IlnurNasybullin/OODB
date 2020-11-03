@@ -50,7 +50,7 @@ public class Main {
     }
 
     private static void saveInGraphML(Graph<Vertex, Edge> graph) throws IOException {
-        GraphMLExporter<Vertex, Edge> exporter = new GraphMLExporter<Vertex, Edge>();
+        GraphMLExporter<Vertex, Edge> exporter = new GraphMLExporter<>();
         OutputStream stream = Files.newOutputStream(Path.of("./src/main/resources/graph.graphml"), StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
         exporter.exportGraph(graph, stream);
     }
@@ -83,13 +83,16 @@ public class Main {
         for (Vertex vertex: vertices) {
             Set<Edge> edges = graph.outgoingEdgesOf(vertex);
             mxICell mxICellVertex = vertexToCellMap.get(vertex);
+            mxICellVertex.setValue(vertex.getVertexClass().getSimpleName());
             mxICellVertex.setStyle("fontSize=18");
             mxGeometry geometry = mxICellVertex.getGeometry();
             geometry.setWidth(80);
             geometry.setHeight(40);
             String hexFormat = getHEXFormat(iterator.next());
             for (Edge edge: edges) {
-                edgeToCellMap.get(edge).setStyle(String.format("strokeColor=%s;fontColor=%s", hexFormat, hexFormat));
+                mxICell mxICellEdge = edgeToCellMap.get(edge);
+                mxICellEdge.setStyle(String.format("strokeColor=%s;fontColor=%s", hexFormat, hexFormat));
+                mxICellEdge.setValue(edge.getType());
             }
         }
 
@@ -101,7 +104,7 @@ public class Main {
     }
 
     private static Map<String, Object> getDefaultEdgeStyle() {
-        Map<String, Object> style = new Hashtable<String, Object>();
+        Map<String, Object> style = new Hashtable<>();
 
         style.put(mxConstants.STYLE_SHAPE, mxConstants.SHAPE_CONNECTOR);
         style.put(mxConstants.STYLE_ENDARROW, mxConstants.ARROW_CLASSIC);
@@ -114,7 +117,7 @@ public class Main {
     }
 
     private static Map<String, Object> getDefaultVertexStyle() {
-        Map<String, Object> style = new Hashtable<String, Object>();
+        Map<String, Object> style = new Hashtable<>();
 
         style.put(mxConstants.STYLE_SHAPE, mxConstants.SHAPE_ELLIPSE);
         style.put(mxConstants.STYLE_PERIMETER, mxPerimeter.RectanglePerimeter);
@@ -129,7 +132,7 @@ public class Main {
 
     private static class ColorIterator implements Iterator<Color> {
 
-        private Color[] colors = {Color.BLACK, Color.BLUE, Color.GREEN, Color.MAGENTA, Color.RED, Color.ORANGE};
+        private final Color[] colors = {Color.BLACK, Color.BLUE, Color.GREEN, Color.MAGENTA, Color.RED, Color.ORANGE};
         private int index;
         private final boolean isRandom;
 

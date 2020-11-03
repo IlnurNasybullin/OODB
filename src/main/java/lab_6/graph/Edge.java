@@ -12,6 +12,14 @@ public class Edge extends DefaultEdge {
         this.type = type;
     }
 
+    public RelationType getType() {
+        return type;
+    }
+
+    public void setType(RelationType type) {
+        this.type = type;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -28,8 +36,7 @@ public class Edge extends DefaultEdge {
 
     @Override
     public String toString() {
-        return type.toString();
-//        return String.format(String.format("(%s : %s, relation type = %s)", getSource(), getTarget(), type));
+        return String.format(String.format("(%s : %s, relation type = %s)", getSource(), getTarget(), type));
     }
 
 }

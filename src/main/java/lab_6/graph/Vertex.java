@@ -59,7 +59,6 @@ public class Vertex {
 
     @Override
     public String toString() {
-        return vertexClass.getSimpleName();
-//        return String.format("{name: %s, attributes: %s}", vertexClass.getSimpleName(), vertexAttributes);
+        return String.format("{name: %s, attributes: %s}", vertexClass.getSimpleName(), vertexAttributes);
     }
 }
