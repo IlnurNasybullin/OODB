@@ -2,7 +2,8 @@ package airlines.db;
 
 import lab_6.annotations.Column;
 import lab_6.annotations.Entity;
-import lab_6.annotations.ManyToOne;
+import lab_6.annotations.Relation;
+import lab_6.graph.RelationType;
 
 import java.util.Objects;
 @Entity
@@ -10,14 +11,14 @@ public class PlainTicket {
     @Column
     private final String ticketID;
     @Column
-    @ManyToOne
+    @Relation(type = RelationType.MANY_TO_ONE)
     private TicketType ticketType;
     @Column
     private double cost;
     @Column
     private String place;
     @Column
-    @ManyToOne
+    @Relation(type = RelationType.MANY_TO_ONE)
     private Passenger passenger;
 
     public PlainTicket(String ticketID) {

@@ -4,7 +4,8 @@ import airlines.utilData.Address;
 import airlines.utilData.FullName;
 import lab_6.annotations.Column;
 import lab_6.annotations.Entity;
-import lab_6.annotations.ManyToOne;
+import lab_6.annotations.Relation;
+import lab_6.graph.RelationType;
 
 import java.util.Objects;
 @Entity
@@ -18,7 +19,7 @@ public class Staff {
     @Column
     private int flightHours;
     @Column
-    @ManyToOne
+    @Relation(type = RelationType.MANY_TO_ONE)
     private StaffPosition position;
 
     public Staff(String passportID) {

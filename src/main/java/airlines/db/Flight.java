@@ -1,6 +1,9 @@
 package airlines.db;
 
-import lab_6.annotations.*;
+import lab_6.annotations.Column;
+import lab_6.annotations.Entity;
+import lab_6.annotations.Relation;
+import lab_6.graph.RelationType;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -12,7 +15,7 @@ import java.util.Objects;
 @Entity
 public class Flight {
     @Column
-    @ManyToOne
+    @Relation(type = RelationType.MANY_TO_ONE)
     private final Route route;
     @Column
     private final LocalDateTime start;
@@ -25,10 +28,10 @@ public class Flight {
     @Column
     private boolean successful;
     @Column
-    @OneToOne
+    @Relation(type = RelationType.ONE_TO_ONE)
     private FlightPassport flightPassport;
     @Column
-    @OneToMany
+    @Relation(targetClass = PlainTicket.class, type = RelationType.ONE_TO_MANY)
     private List<PlainTicket> plainTickets;
 
     public Flight(Route route, LocalDateTime start, LocalDateTime end) {

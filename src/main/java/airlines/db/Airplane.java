@@ -2,7 +2,8 @@ package airlines.db;
 
 import lab_6.annotations.Column;
 import lab_6.annotations.Entity;
-import lab_6.annotations.OneToOne;
+import lab_6.annotations.Relation;
+import lab_6.graph.RelationType;
 
 import java.time.LocalDate;
 import java.util.Objects;
@@ -25,7 +26,7 @@ public class Airplane {
     @Column
     private LocalDate nearestOperationDate;
     @Column
-    @OneToOne
+    @Relation(type = RelationType.ONE_TO_ONE)
     private TechnicalPassport technicalPassport;
 
     public Airplane(String registrationNumber) {

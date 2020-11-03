@@ -2,16 +2,17 @@ package airlines.db;
 
 import lab_6.annotations.Column;
 import lab_6.annotations.Entity;
-import lab_6.annotations.ManyToOne;
+import lab_6.annotations.Relation;
+import lab_6.graph.RelationType;
 
 import java.util.Objects;
 @Entity
 public class Route {
     @Column
-    @ManyToOne
+    @Relation(type = RelationType.MANY_TO_ONE)
     private final Airport from;
     @Column
-    @ManyToOne
+    @Relation(type = RelationType.MANY_TO_ONE)
     private final Airport to;
 
     public static Route of(Airport from, Airport to) {

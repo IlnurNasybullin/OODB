@@ -2,8 +2,8 @@ package airlines.db;
 
 import lab_6.annotations.Column;
 import lab_6.annotations.Entity;
-import lab_6.annotations.OneToMany;
-import lab_6.annotations.OneToOne;
+import lab_6.annotations.Relation;
+import lab_6.graph.RelationType;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -14,12 +14,12 @@ public class FlightPassport {
     @Column
     private final String flightPassportID;
     @Column
-    @OneToOne
+    @Relation(type = RelationType.ONE_TO_ONE)
     private Airplane airplane;
     @Column
     private String operatedCompany;
     @Column
-    @OneToMany
+    @Relation(type = RelationType.ONE_TO_MANY, targetClass = Staff.class)
     private List<Staff> staffs;
 
     public FlightPassport(String flightPassportID, List<Staff> staffs) {
