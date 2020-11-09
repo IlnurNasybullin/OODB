@@ -1,6 +1,6 @@
 package lab_5.db;
 
-import airlines.utilData.geographic.Longitude;
+import airlines.userTypes.geographic.Longitude;
 import lab_5.AbstractPGObjectWrapper;
 import org.postgresql.util.PGtokenizer;
 

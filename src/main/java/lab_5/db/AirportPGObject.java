@@ -1,6 +1,6 @@
 package lab_5.db;
 
-import airlines.db.Airport;
+import airlines.entities.Airport;
 import lab_5.AbstractPGObjectWrapper;
 import org.postgresql.util.PGtokenizer;
 

@@ -1,11 +1,10 @@
 package lab_4;
 
-import airlines.db.Route;
+import airlines.entities.Route;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.reflect.TypeToken;
-import handlers.DatabaseHandler;
 
 import java.io.IOException;
 import java.nio.file.Files;

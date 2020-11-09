@@ -1,7 +1,7 @@
 package lab_5.db;
 
-import airlines.utilData.metrics.Length;
-import airlines.utilData.metrics.LengthType;
+import airlines.userTypes.metrics.Length;
+import airlines.userTypes.metrics.LengthType;
 import lab_5.AbstractPGObjectWrapper;
 import org.postgresql.util.PGtokenizer;
 

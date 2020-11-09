@@ -1,6 +1,6 @@
 package lab_5;
 
-import airlines.db.Route;
+import airlines.entities.Route;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonDeserializer;

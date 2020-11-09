@@ -8,11 +8,11 @@ import com.mxgraph.util.mxCellRenderer;
 import com.mxgraph.util.mxConstants;
 import com.mxgraph.view.mxPerimeter;
 import com.mxgraph.view.mxStylesheet;
-import lab_6.class_workers.ClassAnalyzer;
-import lab_6.class_workers.ClassScanner;
-import lab_6.graph.Edge;
-import lab_6.graph.GraphModel;
-import lab_6.graph.Vertex;
+import analyse.ClassAnalyzer;
+import analyse.ClassScanner;
+import graph.Edge;
+import graph.GraphModel;
+import graph.Vertex;
 import org.jgrapht.Graph;
 import org.jgrapht.ext.JGraphXAdapter;
 import org.jgrapht.nio.graphml.GraphMLExporter;
@@ -34,7 +34,7 @@ import java.util.function.Consumer;
 
 public class Main {
     public static void main(String[] args) throws URISyntaxException, IOException {
-        List<Class<?>> classes = new ClassScanner().get(URI.create("airlines/db"));
+        List<Class<?>> classes = new ClassScanner().get(URI.create("airlines/entities"));
         classAnalyse(classes);
         Graph<Vertex, Edge> graph = new GraphModel(classes);
         createPNGFile(graph);

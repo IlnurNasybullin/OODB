@@ -1,8 +1,8 @@
 package lab_5.db;
 
-import airlines.utilData.geographic.GeographicCoordinates;
-import airlines.utilData.geographic.GeographicPosition;
-import airlines.utilData.metrics.Length;
+import airlines.userTypes.geographic.GeographicCoordinates;
+import airlines.userTypes.geographic.GeographicPosition;
+import airlines.userTypes.metrics.Length;
 import lab_5.AbstractPGObjectWrapper;
 import org.postgresql.util.PGtokenizer;
 

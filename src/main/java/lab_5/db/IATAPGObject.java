@@ -1,6 +1,6 @@
 package lab_5.db;
 
-import airlines.utilData.IATA;
+import airlines.userTypes.IATA;
 import lab_5.AbstractPGObjectWrapper;
 import org.postgresql.util.PGtokenizer;
 

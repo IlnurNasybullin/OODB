@@ -1,9 +1,9 @@
 package lab_2;
 
-import airlines.db.Airport;
-import airlines.db.Flight;
-import airlines.db.Route;
-import airlines.utilData.AirportICAO;
+import airlines.entities.Airport;
+import airlines.entities.Flight;
+import airlines.entities.Route;
+import airlines.userTypes.AirportICAO;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -18,7 +18,10 @@ public class DataContainer {
             LocalDateTime start = getRandomDate();
             LocalDateTime end = start.plusHours(7);
 
-            flights.add(new Flight(route, start, end));
+            Flight flight = new Flight(route);
+            flight.setStart(start);
+            flight.setEnd(end);
+            flights.add(flight);
         }
 
         return flights;

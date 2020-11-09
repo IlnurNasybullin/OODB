@@ -1,6 +1,6 @@
 package lab_3;
 
-import airlines.db.Flight;
+import airlines.entities.Flight;
 import com.thoughtworks.xstream.XStream;
 import lab_2.DataContainer;
 

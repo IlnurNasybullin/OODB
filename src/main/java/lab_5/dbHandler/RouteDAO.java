@@ -1,6 +1,6 @@
 package lab_5.dbHandler;
 
-import airlines.db.Route;
+import airlines.entities.Route;
 import lab_5.db.RoutePGObject;
 
 import java.sql.*;

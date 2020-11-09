@@ -1,6 +1,6 @@
 package lab_5.db;
 
-import airlines.utilData.geographic.GeographicCoordinates;
+import airlines.userTypes.geographic.GeographicCoordinates;
 import lab_5.AbstractPGObjectWrapper;
 import org.postgresql.util.PGtokenizer;
 
