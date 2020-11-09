@@ -1,24 +1,35 @@
 package airlines.userTypes.geographic;
 
+import annotations.*;
+
 import java.math.BigDecimal;
 import java.math.MathContext;
 import java.util.Objects;
 
 public abstract class Coordinate {
 
-    protected final int degrees;
-    protected final int minutes;
+    @TypeComponent
+    protected final short degrees;
+    @TypeComponent
+    @Range(minValue = @MinValue(byteValue = 0), maxValue = @MaxValue(byteValue = DEGREE_TO_MINUTES))
+    protected final byte minutes;
+    @TypeComponent
+    @Range(minValue = @MinValue(doubleValue = 0d), maxValue = @MaxValue(doubleValue = MINUTES_TO_SECONDS))
     protected final double seconds;
 
     public static final int DEGREE_TO_MINUTES = 60;
     public static final int MINUTES_TO_SECONDS = 60;
 
-    protected Coordinate(double degrees) {
-        this((int) degrees, getMinutes(degrees));
+    protected Coordinate() {
+        this(0d);
     }
 
-    protected Coordinate(int degrees, double minutes) {
-        this(degrees, (int) minutes, getSeconds(minutes));
+    protected Coordinate(double degrees) {
+        this((short) degrees, getMinutes(degrees));
+    }
+
+    protected Coordinate(short degrees, double minutes) {
+        this(degrees, (byte) minutes, getSeconds(minutes));
     }
 
     private static double getMinutes(double degrees) {
@@ -37,7 +48,7 @@ public abstract class Coordinate {
         return Double.toString(Math.abs(minutes)).length() - 1;
     }
 
-    protected Coordinate(int degrees, int minutes, double seconds) {
+    protected Coordinate(short degrees, byte minutes, double seconds) {
         this.degrees = degrees;
         this.minutes = minutes;
         this.seconds = seconds;
@@ -55,11 +66,11 @@ public abstract class Coordinate {
         }
     }
 
-    public int getDegrees() {
+    public short getDegrees() {
         return degrees;
     }
 
-    public int getMinutes() {
+    public byte getMinutes() {
         return minutes;
     }
 
@@ -76,7 +87,7 @@ public abstract class Coordinate {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Latitude that = (Latitude) o;
+        Coordinate that = (Coordinate) o;
         return degrees == that.degrees &&
                 minutes == that.minutes &&
                 seconds == that.seconds;

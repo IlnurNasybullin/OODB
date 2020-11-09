@@ -44,9 +44,9 @@ public class Length {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Length length1 = (Length) o;
-        return Double.compare(length1.length, length) == 0 &&
-                type == length1.type;
+        Length that = (Length) o;
+        return Double.compare(that.length, length) == 0 &&
+                type == that.type;
     }
 
     @Override

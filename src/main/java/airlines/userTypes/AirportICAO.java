@@ -47,7 +47,7 @@ public class AirportICAO {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         AirportICAO that = (AirportICAO) o;
-        return Objects.equals(ID, that.ID);
+        return ID.equals(that.ID);
     }
 
     @Override

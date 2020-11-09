@@ -2,13 +2,15 @@ package airlines.userTypes;
 
 import annotations.Column;
 import annotations.Entity;
+import annotations.TypeComponent;
+import annotations.UserType;
 
-@Entity
+@UserType
 public enum TicketType {
-    @Column
+    @TypeComponent
     FIRST,
-    @Column
+    @TypeComponent
     BUSINESS,
-    @Column
+    @TypeComponent
     ECONOMY
 }

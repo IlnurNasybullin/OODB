@@ -1,26 +1,27 @@
 package airlines.userTypes;
 
+import annotations.TypeComponent;
+import annotations.UserType;
+
 import java.util.Objects;
-
+@UserType
 public class Address {
+    @TypeComponent
     private String country;
+    @TypeComponent
     private String region;
+    @TypeComponent
     private String city;
+    @TypeComponent
     private String street;
+    @TypeComponent
     private String house;
+    @TypeComponent
     private String flat;
-
+    @TypeComponent
     private String postalCode;
 
-    public Address(String country, String region, String city, String street, String house, String flat, String postalCode) {
-        this.country = country;
-        this.region = region;
-        this.city = city;
-        this.street = street;
-        this.house = house;
-        this.flat = flat;
-        this.postalCode = postalCode;
-    }
+    public Address() { }
 
     public String getCountry() {
         return country;
@@ -67,5 +68,11 @@ public class Address {
     @Override
     public int hashCode() {
         return Objects.hash(country, region, city, street, house, flat, postalCode);
+    }
+
+    @Override
+    public String toString() {
+        return String.format("Address{country = %s, region = %s, city = %s, street = %s, house = %s, flat = %s, postalCode = %s}",
+                             country, region, city, street, house, flat, postalCode);
     }
 }

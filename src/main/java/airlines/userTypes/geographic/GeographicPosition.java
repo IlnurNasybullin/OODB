@@ -11,8 +11,6 @@ import java.util.Objects;
 @UserType
 public class GeographicPosition {
 
-    private static final GeographicCoordinates DEFAULT_GEOGRAPHIC_POSITION;
-
     @TypeComponent
     private final GeographicCoordinates coordinates;
     @TypeComponent(SQLType = Types.VARCHAR)
@@ -24,14 +22,8 @@ public class GeographicPosition {
     @TypeComponent
     private Length altitude;
 
-    static {
-        Latitude latitude = Latitude.of(0);
-        Longitude longitude = Longitude.of(0);
-        DEFAULT_GEOGRAPHIC_POSITION = new GeographicCoordinates(latitude, longitude);
-    }
-
     private GeographicPosition() {
-        this(DEFAULT_GEOGRAPHIC_POSITION);
+        this(GeographicCoordinates.DEFAULT);
     }
 
     public GeographicPosition(GeographicCoordinates coordinates) {
@@ -89,6 +81,6 @@ public class GeographicPosition {
 
     @Override
     public String toString() {
-        return String.format("Geographic position {coordinates = %s}", coordinates);
+        return String.format("GeographicPosition{coordinates = (%s)}", coordinates);
     }
 }

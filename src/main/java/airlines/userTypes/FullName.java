@@ -1,17 +1,20 @@
 package airlines.userTypes;
 
+import annotations.TypeComponent;
+import annotations.UserType;
+
 import java.util.Objects;
 
+@UserType
 public class FullName {
-
+    @TypeComponent
     private String familyName;
+    @TypeComponent
     private String name;
+    @TypeComponent
     private String fatherName;
 
-    public FullName(String familyName, String name) {
-        this.familyName = familyName;
-        this.name = name;
-    }
+    public FullName() { }
 
     public void setFamilyName(String familyName) {
         this.familyName = familyName;
@@ -50,5 +53,10 @@ public class FullName {
     @Override
     public int hashCode() {
         return Objects.hash(familyName, name, fatherName);
+    }
+
+    @Override
+    public String toString() {
+        return String.format("%s %s %s", familyName, name, fatherName);
     }
 }

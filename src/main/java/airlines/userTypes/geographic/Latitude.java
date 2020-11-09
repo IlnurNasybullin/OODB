@@ -1,27 +1,31 @@
 package airlines.userTypes.geographic;
 
+import annotations.*;
+
+import static airlines.userTypes.geographic.Latitude.MAX_DEGREE;
+import static airlines.userTypes.geographic.Latitude.MIN_DEGREE;
+
+@UserType(targetClass = Coordinate.class, constraints = @Constraint(fieldName = "degrees",
+        range = @Range(minValue = @MinValue(doubleValue = MIN_DEGREE), maxValue = @MaxValue(doubleValue = MAX_DEGREE))))
 public class Latitude extends Coordinate {
 
-    transient public static final int MIN_DEGREE;
-    transient public static final int MAX_DEGREE;
+    transient public static final double MIN_DEGREE = -90d;
+    transient public static final double MAX_DEGREE = 90d;
 
-    static {
-        MIN_DEGREE = -90;
-        MAX_DEGREE = 90;
-    }
+    public static final Latitude DEFAULT = new Latitude();
 
     public static Latitude of(double degrees) {
         checkDegree(degrees);
         return new Latitude(degrees);
     }
 
-    public static Latitude of(int degrees, double minutes) {
+    public static Latitude of(short degrees, double minutes) {
         checkDegree(degrees);
         checkMinutes(minutes);
         return new Latitude(degrees, minutes);
     }
 
-    public static Latitude of(int degree, int minutes, double seconds) {
+    public static Latitude of(short degree, byte minutes, double seconds) {
         checkDegree(degree);
         checkMinutes(minutes);
         checkSeconds(seconds);
@@ -34,15 +38,19 @@ public class Latitude extends Coordinate {
         }
     }
 
+    private Latitude() {
+        super();
+    }
+
     private Latitude(double degrees) {
         super(degrees);
     }
 
-    private Latitude(int degrees, double minutes) {
+    private Latitude(short degrees, double minutes) {
         super(degrees, minutes);
     }
 
-    private Latitude(int degrees, int minutes, double seconds) {
+    private Latitude(short degrees, byte minutes, double seconds) {
         super(degrees, minutes, seconds);
     }
 

@@ -2,13 +2,15 @@ package airlines.userTypes;
 
 import annotations.Column;
 import annotations.Entity;
+import annotations.TypeComponent;
+import annotations.UserType;
 
-@Entity
+@UserType
 public enum StaffPosition {
-    @Column
+    @TypeComponent
     PILOT,
-    @Column
+    @TypeComponent
     ASSISTANT,
-    @Column
+    @TypeComponent
     STEWARDESS
 }

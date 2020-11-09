@@ -18,7 +18,7 @@ public class IATA {
     private final static Predicate<String> pattern = Pattern.compile("[A-Z0-9]{3}").asPredicate();
 
     private IATA() {
-        this("");
+        this("000");
     }
 
     private IATA(String id) {
@@ -45,7 +45,7 @@ public class IATA {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         IATA that = (IATA) o;
-        return Objects.equals(ID, that.ID);
+        return ID.equals(that.ID);
     }
 
     @Override
