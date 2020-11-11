@@ -5,7 +5,7 @@ import annotations.*;
 import static airlines.userTypes.geographic.Latitude.MAX_DEGREE;
 import static airlines.userTypes.geographic.Latitude.MIN_DEGREE;
 
-@UserType(targetClass = Coordinate.class, constraints = @Constraint(fieldName = "degrees",
+@UserType(targetClass = Coordinate.class, constraints = @Constraint(fieldName = "degrees", typeName = "latitude_degree",
         range = @Range(minValue = @MinValue(doubleValue = MIN_DEGREE), maxValue = @MaxValue(doubleValue = MAX_DEGREE))))
 public class Latitude extends Coordinate {
 

@@ -11,5 +11,5 @@ public interface TableData {
     String length = "\"length\"";
     String altitude = "altitude";
     String city = "city";
-    String ID = "\"ID\"";
+    String ID = "\"AutoIncrementable\"";
 }

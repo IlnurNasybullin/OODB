@@ -1,22 +1,19 @@
 package airlines.entities;
 
 import annotations.*;
-import graph.RelationType;
+import lab_6.graph.RelationType;
 
 import java.util.Objects;
 @Entity
 public class Route {
 
-    @Column
-    @ID
+    @AutoIncrementable
     @PrimaryKey
     private Long ID;
 
-    @Column
     @Relation(type = RelationType.MANY_TO_ONE)
     @Unique(constraintName = "route_unique")
     private final Airport from;
-    @Column
     @Relation(type = RelationType.MANY_TO_ONE)
     @Unique(constraintName = "route_unique")
     private final Airport to;

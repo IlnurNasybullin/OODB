@@ -1,4 +1,4 @@
-package graph;
+package lab_6.graph;
 
 import org.jgrapht.graph.DefaultEdge;
 

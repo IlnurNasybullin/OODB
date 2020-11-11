@@ -38,7 +38,7 @@ public class TechnicalPassportID {
 
     private static void checkID(String id) {
         if (Objects.isNull(id) || pattern.negate().test(id)) {
-            throw new IllegalArgumentException("%s не является ID технического паспорта!");
+            throw new IllegalArgumentException("%s не является AutoIncrementable технического паспорта!");
         }
     }
 

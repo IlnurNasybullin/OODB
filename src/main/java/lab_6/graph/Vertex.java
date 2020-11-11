@@ -1,4 +1,4 @@
-package graph;
+package lab_6.graph;
 
 import annotations.Column;
 
@@ -59,6 +59,6 @@ public class Vertex {
 
     @Override
     public String toString() {
-        return String.format("{name: %s, attributes: %s}", vertexClass.getSimpleName(), vertexAttributes);
+        return String.format("{constraintName: %s, attributes: %s}", vertexClass.getSimpleName(), vertexAttributes);
     }
 }

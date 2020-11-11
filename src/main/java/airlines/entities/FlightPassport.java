@@ -1,28 +1,25 @@
 package airlines.entities;
 
 import annotations.*;
-import graph.RelationType;
+import lab_6.graph.RelationType;
 
 import java.util.*;
 
 @Entity
 public class FlightPassport {
 
-    @Column
-    @ID
+    @AutoIncrementable
     @PrimaryKey
     private Long ID;
 
     @Column
     @Unique
     private final String flightPassportID;
-    @Column
     @Relation(type = RelationType.MANY_TO_ONE)
     private Airplane airplane;
     @Column
     private String operatedCompany;
-    @Column
-    @Relation(type = RelationType.ONE_TO_MANY, targetClass = Staff.class)
+    @Relation(type = RelationType.ONE_TO_MANY, target = Staff.class)
     private Set<Staff> staffs;
 
     private FlightPassport() {

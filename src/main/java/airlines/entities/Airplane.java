@@ -1,7 +1,7 @@
 package airlines.entities;
 
 import annotations.*;
-import graph.RelationType;
+import lab_6.graph.RelationType;
 
 import java.time.LocalDate;
 import java.util.Objects;
@@ -10,8 +10,7 @@ import java.util.function.BiPredicate;
 @Entity
 public class Airplane {
 
-    @Column
-    @ID
+    @AutoIncrementable
     @PrimaryKey
     private Long ID;
 
@@ -30,7 +29,6 @@ public class Airplane {
     private LocalDate registrationDate;
     @Column
     private LocalDate nearestOperationDate;
-    @Column
     @Unique
     @Relation(type = RelationType.ONE_TO_ONE)
     private TechnicalPassport technicalPassport;

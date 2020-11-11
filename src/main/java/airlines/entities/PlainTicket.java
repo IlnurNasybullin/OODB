@@ -2,14 +2,13 @@ package airlines.entities;
 
 import airlines.userTypes.TicketType;
 import annotations.*;
-import graph.RelationType;
+import lab_6.graph.RelationType;
 
 import java.util.Objects;
 @Entity
 public class PlainTicket {
 
-    @Column
-    @ID
+    @AutoIncrementable
     @PrimaryKey
     private Long ID;
 
@@ -23,7 +22,6 @@ public class PlainTicket {
     @Column
     @Unique
     private String place;
-    @Column
     @Relation(type = RelationType.MANY_TO_ONE)
     private Passenger passenger;
 

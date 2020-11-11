@@ -1,4 +1,4 @@
-package graph;
+package lab_6.graph;
 
 import annotations.*;
 import org.jgrapht.graph.DefaultDirectedGraph;
@@ -62,7 +62,7 @@ public class GraphModel extends DefaultDirectedGraph<Vertex, Edge> {
     private void fillEdges() {
         for (Field field: fields) {
             Relation annotation = field.getAnnotation(Relation.class);
-            Class<?> targetClass = annotation.targetClass();
+            Class<?> targetClass = annotation.target();
             Class<?> fieldTargetClass = (targetClass == Relation.DEFAULT_CLASS) ?
                     field.getType() : targetClass;
             addEdge(VertexFactory.get(field.getDeclaringClass()), VertexFactory.get(fieldTargetClass), new Edge(annotation.type()));

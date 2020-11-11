@@ -4,14 +4,12 @@ import airlines.userTypes.Address;
 import airlines.userTypes.FullName;
 import airlines.userTypes.StaffPosition;
 import annotations.*;
-import graph.RelationType;
 
 import java.util.Objects;
 @Entity
 public class Staff {
 
-    @Column
-    @ID
+    @AutoIncrementable
     @PrimaryKey
     private Long ID;
 

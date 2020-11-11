@@ -8,6 +8,7 @@ import java.lang.annotation.Target;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.FIELD)
-public @interface ID {
+@Column
+public @interface AutoIncrementable {
     String name() default "";
 }

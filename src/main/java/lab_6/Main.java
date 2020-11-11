@@ -10,9 +10,9 @@ import com.mxgraph.view.mxPerimeter;
 import com.mxgraph.view.mxStylesheet;
 import analyse.ClassAnalyzer;
 import analyse.ClassScanner;
-import graph.Edge;
-import graph.GraphModel;
-import graph.Vertex;
+import lab_6.graph.Edge;
+import lab_6.graph.GraphModel;
+import lab_6.graph.Vertex;
 import org.jgrapht.Graph;
 import org.jgrapht.ext.JGraphXAdapter;
 import org.jgrapht.nio.graphml.GraphMLExporter;
@@ -51,12 +51,12 @@ public class Main {
 
     private static void saveInGraphML(Graph<Vertex, Edge> graph) throws IOException {
         GraphMLExporter<Vertex, Edge> exporter = new GraphMLExporter<>();
-        OutputStream stream = Files.newOutputStream(Path.of("./src/main/resources/graph.graphml"), StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
+        OutputStream stream = Files.newOutputStream(Path.of("./src/main/resources/lab_6.graph.graphml"), StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
         exporter.exportGraph(graph, stream);
     }
 
     private static void createPNGFile(Graph<Vertex, Edge> graph) throws IOException {
-        File imgFile = new File("./src/main/resources/graph.png");
+        File imgFile = new File("./src/main/resources/lab_6.graph.png");
         imgFile.createNewFile();
 
         JGraphXAdapter<Vertex, Edge> graphAdapter =

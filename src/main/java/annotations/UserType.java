@@ -10,7 +10,7 @@ import java.util.Objects;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface UserType {
     String name() default "";
-    Class<?>[] targetClass() default Object.class;
+    Class<?>[] targetClass() default {};
 
     Constraint[] constraints() default {};
 }

@@ -8,8 +8,7 @@ import java.util.Objects;
 @Entity
 public class Passenger {
 
-    @Column
-    @ID
+    @AutoIncrementable
     @PrimaryKey
     private Long ID;
 

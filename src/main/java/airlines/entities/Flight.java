@@ -1,7 +1,7 @@
 package airlines.entities;
 
 import annotations.*;
-import graph.RelationType;
+import lab_6.graph.RelationType;
 
 import java.time.LocalDateTime;
 import java.util.Collection;
@@ -12,12 +12,10 @@ import java.util.Set;
 @Entity
 public class Flight {
 
-    @Column
-    @ID
+    @AutoIncrementable
     @PrimaryKey
     private Long ID;
 
-    @Column
     @Relation(type = RelationType.MANY_TO_ONE)
     private final Route route;
     @Column
@@ -30,12 +28,10 @@ public class Flight {
     private LocalDateTime realEndTime;
     @Column
     private Boolean successful;
-    @Column
     @Unique
     @Relation(type = RelationType.ONE_TO_ONE)
     private FlightPassport flightPassport;
-    @Column
-    @Relation(targetClass = PlainTicket.class, type = RelationType.ONE_TO_MANY)
+    @Relation(target = PlainTicket.class, type = RelationType.ONE_TO_MANY)
     private Set<PlainTicket> plainTickets;
 
     private Flight() {

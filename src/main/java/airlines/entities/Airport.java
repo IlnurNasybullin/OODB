@@ -3,19 +3,15 @@ package airlines.entities;
 import airlines.userTypes.AirportICAO;
 import airlines.userTypes.IATA;
 import airlines.userTypes.geographic.GeographicPosition;
-import annotations.Column;
-import annotations.Entity;
-import annotations.PrimaryKey;
-import annotations.Unique;
-import annotations.ID;
+import annotations.*;
+import annotations.AutoIncrementable;
 
 import java.util.Objects;
 
 @Entity
 public class Airport {
 
-    @Column
-    @ID
+    @AutoIncrementable
     @PrimaryKey
     private Long ID;
 
