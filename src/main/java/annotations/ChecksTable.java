@@ -4,9 +4,6 @@ import java.lang.annotation.*;
 
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
-@Inherited
-public @interface Entity {
-    String DEFAULT_NAME = "";
-
-    String name() default DEFAULT_NAME;
+public @interface ChecksTable {
+    CheckTable[] value();
 }

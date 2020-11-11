@@ -2,25 +2,22 @@ package airlines.entities;
 
 import airlines.userTypes.TicketType;
 import annotations.*;
-import lab_6.graph.RelationType;
 
 import java.util.Objects;
 @Entity
 public class PlainTicket {
-
-    @AutoIncrementable
     @PrimaryKey
+    @AutoIncrement
     private Long ID;
-
-    @Column
+    @NotNull
     @Unique
     private final String ticketID;
     @Column
     private TicketType ticketType;
-    @Column
+    @Check(type = CheckType.MORE_AND_EQUAL, expression = @Expression(expression = "0.00"))
+    @Numeric(type = Numeric.SQLType.NUMERIC, precision = 8, scale = 2)
     private Double cost;
     @Column
-    @Unique
     private String place;
     @Relation(type = RelationType.MANY_TO_ONE)
     private Passenger passenger;

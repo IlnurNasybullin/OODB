@@ -1,6 +1,7 @@
 package lab_6.graph;
 
 import annotations.Column;
+import annotations.ReflectionUtils;
 
 import java.lang.reflect.Field;
 import java.util.*;
@@ -22,14 +23,10 @@ public class Vertex {
 
     private void fillVertexAttributesSet() {
         for (Field field: vertexClass.getDeclaredFields()) {
-            if (containsAnnotation(field)) {
+            if (ReflectionUtils.hasAnnotation(field, Column.class)) {
                 vertexAttributes.add(new VertexAttribute(field.getType().getName(), field.getName()));
             }
         }
-    }
-
-    private boolean containsAnnotation(Field field) {
-        return Objects.nonNull(field.getDeclaredAnnotation(Column.class));
     }
 
     public Class<?> getVertexClass() {

@@ -1,10 +1,11 @@
 package airlines.userTypes;
 
+import annotations.CompositeType;
 import annotations.TypeComponent;
-import annotations.UserType;
 
 import java.util.Objects;
-@UserType
+
+@CompositeType
 public class Address {
     @TypeComponent
     private String country;

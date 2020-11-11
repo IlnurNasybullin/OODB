@@ -1,26 +1,29 @@
 package airlines.userTypes;
 
-import annotations.TypeComponent;
-import annotations.UserType;
+import annotations.CompositeType;
+import annotations.NotNull;
+import annotations.POSIX;
 
 import java.util.Objects;
 import java.util.function.Predicate;
 import java.util.regex.Pattern;
-
-@UserType
+@CompositeType
 public class TechnicalPassportID {
-
-    @TypeComponent
+    @NotNull
+    @POSIX(regex = REGEX, length = COUNT)
     private final String ID;
+
     private final static Predicate<String> length;
     private final static Predicate<String> pattern;
 
     public static final int COUNT = 8;
     public static final TechnicalPassportID DEFAULT = new TechnicalPassportID();
 
+    public static final String REGEX = "[A-Z0-9]{8}";
+
     static {
         length = string -> string.length() == COUNT;
-        pattern = length.and(Pattern.compile("[A-Z0-9]{8}").asPredicate());
+        pattern = length.and(Pattern.compile(REGEX).asPredicate());
     }
 
     private TechnicalPassportID() {

@@ -1,5 +1,6 @@
 package lab_6.graph;
 
+import annotations.RelationType;
 import org.jgrapht.graph.DefaultEdge;
 
 import java.util.Objects;

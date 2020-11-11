@@ -1,16 +1,15 @@
 package airlines.userTypes.metrics;
 
+import annotations.CompositeType;
+import annotations.NotNull;
 import annotations.TypeComponent;
-import annotations.UserType;
 
 import java.util.Objects;
-
-@UserType
+@CompositeType
 public class Length {
-
-    @TypeComponent
+    @NotNull
     private double length;
-    @TypeComponent
+    @NotNull
     private LengthType type;
 
     private Length() {this(0d);}

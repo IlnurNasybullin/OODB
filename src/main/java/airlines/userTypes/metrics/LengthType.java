@@ -1,9 +1,9 @@
 package airlines.userTypes.metrics;
 
+import annotations.EnumType;
 import annotations.TypeComponent;
-import annotations.UserType;
 
-@UserType
+@EnumType
 public enum LengthType {
     @TypeComponent
     METRE,

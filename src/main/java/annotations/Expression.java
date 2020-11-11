@@ -1,18 +1,12 @@
 package annotations;
 
-import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
 import java.sql.Types;
-
-@Target({ElementType.FIELD, ElementType.ANNOTATION_TYPE})
 @Retention(RetentionPolicy.RUNTIME)
-public @interface Column {
-
-    String DEFAULT_NAME = "";
+public @interface Expression {
     int DEFAULT_SQL_TYPE = Types.OTHER;
 
-    String name() default DEFAULT_NAME;
+    String expression();
     int SQLType() default DEFAULT_SQL_TYPE;
 }

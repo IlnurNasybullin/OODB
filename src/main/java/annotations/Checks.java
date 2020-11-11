@@ -6,14 +6,9 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 @Column
-@Retention(RetentionPolicy.RUNTIME)
+@TypeComponent
 @Target(ElementType.FIELD)
-public @interface Relation {
-    RelationType type();
-
-    Class<?> DEFAULT_TARGET = NullObject.class;
-
-    Class<?> target() default NullObject.class;
-
-    class NullObject { }
+@Retention(RetentionPolicy.RUNTIME)
+public @interface Checks {
+    Check[] value();
 }

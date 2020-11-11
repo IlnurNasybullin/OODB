@@ -6,21 +6,20 @@ import airlines.userTypes.StaffPosition;
 import annotations.*;
 
 import java.util.Objects;
+
 @Entity
 public class Staff {
-
-    @AutoIncrementable
     @PrimaryKey
+    @AutoIncrement
     private Long ID;
-
-    @Column
     @Unique
+    @NotNull
     private final String passportID;
     @Column
     private FullName fullName;
     @Column
     private Address address;
-    @Column
+    @Check(type = CheckType.MORE_AND_EQUAL, expression = @Expression(expression = "0"))
     private Integer flightHours;
     @Column
     private StaffPosition position;

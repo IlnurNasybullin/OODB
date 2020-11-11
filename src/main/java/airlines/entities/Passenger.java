@@ -7,13 +7,11 @@ import annotations.*;
 import java.util.Objects;
 @Entity
 public class Passenger {
-
-    @AutoIncrementable
     @PrimaryKey
+    @AutoIncrement
     private Long ID;
-
-    @Column
     @Unique
+    @NotNull
     private final String passportID;
     @Column
     private FullName fullName;

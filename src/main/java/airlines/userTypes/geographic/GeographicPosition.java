@@ -1,17 +1,16 @@
 package airlines.userTypes.geographic;
 
 import airlines.userTypes.metrics.Length;
+import annotations.CompositeType;
+import annotations.NotNull;
 import annotations.TypeComponent;
-import annotations.UserType;
 
 import java.sql.Types;
 import java.time.ZoneId;
 import java.util.Objects;
-
-@UserType
+@CompositeType
 public class GeographicPosition {
-
-    @TypeComponent
+    @NotNull
     private final GeographicCoordinates coordinates;
     @TypeComponent(SQLType = Types.VARCHAR)
     private ZoneId timeZone;

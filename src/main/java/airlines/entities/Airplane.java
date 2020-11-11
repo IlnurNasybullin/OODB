@@ -1,21 +1,23 @@
 package airlines.entities;
 
 import annotations.*;
-import lab_6.graph.RelationType;
 
 import java.time.LocalDate;
 import java.util.Objects;
 import java.util.function.BiPredicate;
-
 @Entity
+@CheckTable(first = @Expression(expression = "${rollingDate}"), type = CheckType.LESS, second = @Expression(expression = "${maidenFlightDate}"))
+@CheckTable(first = @Expression(expression = "${rollingDate}"), type = CheckType.LESS, second = @Expression(expression = "${registrationDate}"))
+@CheckTable(first = @Expression(expression = "${rollingDate}"), type = CheckType.LESS, second = @Expression(expression = "${nearestOperationDate}"))
+@CheckTable(first = @Expression(expression = "${maidenFlightDate}"), type = CheckType.LESS, second = @Expression(expression = "${registrationDate}"))
+@CheckTable(first = @Expression(expression = "${maidenFlightDate}"), type = CheckType.LESS, second = @Expression(expression = "${nearestOperationDate}"))
+@CheckTable(first = @Expression(expression = "${registrationDate}"), type = CheckType.LESS, second = @Expression(expression = "${nearestOperationDate}"))
 public class Airplane {
-
-    @AutoIncrementable
     @PrimaryKey
+    @AutoIncrement
     private Long ID;
-
-    @Column
     @Unique
+    @NotNull
     private final String registrationNumber;
     @Column
     private String name;
@@ -29,7 +31,6 @@ public class Airplane {
     private LocalDate registrationDate;
     @Column
     private LocalDate nearestOperationDate;
-    @Unique
     @Relation(type = RelationType.ONE_TO_ONE)
     private TechnicalPassport technicalPassport;
 

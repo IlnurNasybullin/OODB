@@ -1,7 +1,7 @@
 --------------
 General info
 	Class: public class airlines.entities.Airplane
-	Annotations: [@annotations.Entity(name="")]
+	Annotations: [@annotations.Entity(name=""), @annotations.ChecksTable({@annotations.CheckTable(constraintName="", first=@annotations.Expression(SQLType=1111, expression="${rollingDate}"), type=<, second=@annotations.Expression(SQLType=1111, expression="${maidenFlightDate}")), @annotations.CheckTable(constraintName="", first=@annotations.Expression(SQLType=1111, expression="${rollingDate}"), type=<, second=@annotations.Expression(SQLType=1111, expression="${registrationDate}")), @annotations.CheckTable(constraintName="", first=@annotations.Expression(SQLType=1111, expression="${rollingDate}"), type=<, second=@annotations.Expression(SQLType=1111, expression="${nearestOperationDate}")), @annotations.CheckTable(constraintName="", first=@annotations.Expression(SQLType=1111, expression="${maidenFlightDate}"), type=<, second=@annotations.Expression(SQLType=1111, expression="${registrationDate}")), @annotations.CheckTable(constraintName="", first=@annotations.Expression(SQLType=1111, expression="${maidenFlightDate}"), type=<, second=@annotations.Expression(SQLType=1111, expression="${nearestOperationDate}")), @annotations.CheckTable(constraintName="", first=@annotations.Expression(SQLType=1111, expression="${registrationDate}"), type=<, second=@annotations.Expression(SQLType=1111, expression="${nearestOperationDate}"))})]
 	Superclass: public class java.lang.Object
 	Interfaces: []
 	Additional attributes: 
@@ -9,31 +9,31 @@ General info
 Field of class: 
 
 	private java.lang.Long ID
-	Annotations of field: [@annotations.AutoIncrementable(name=""), @annotations.PrimaryKey(constraintName="")]
+	Annotations of field: [@annotations.PrimaryKey(constraintName=""), @annotations.AutoIncrement(cache=(byte)0x01, minValue=1L, maxValue=9223372036854775807L, incrementBy=1L, name="SERIAL", start=1L, cycle=false, ownedBy=annotations.AutoIncrement$NullObject.class)]
 
 	private final java.lang.String registrationNumber
-	Annotations of field: [@annotations.Column(name="", target=java.lang.Object.class), @annotations.Unique(constraintName="")]
+	Annotations of field: [@annotations.Unique(constraintName=""), @annotations.NotNull()]
 
 	private java.lang.String name
-	Annotations of field: [@annotations.Column(name="", target=java.lang.Object.class)]
+	Annotations of field: [@annotations.Column(name="", SQLType=1111)]
 
 	private java.lang.String airlineName
-	Annotations of field: [@annotations.Column(name="", target=java.lang.Object.class)]
+	Annotations of field: [@annotations.Column(name="", SQLType=1111)]
 
 	private java.time.LocalDate rollingDate
-	Annotations of field: [@annotations.Column(name="", target=java.lang.Object.class)]
+	Annotations of field: [@annotations.Column(name="", SQLType=1111)]
 
 	private java.time.LocalDate maidenFlightDate
-	Annotations of field: [@annotations.Column(name="", target=java.lang.Object.class)]
+	Annotations of field: [@annotations.Column(name="", SQLType=1111)]
 
 	private java.time.LocalDate registrationDate
-	Annotations of field: [@annotations.Column(name="", target=java.lang.Object.class)]
+	Annotations of field: [@annotations.Column(name="", SQLType=1111)]
 
 	private java.time.LocalDate nearestOperationDate
-	Annotations of field: [@annotations.Column(name="", target=java.lang.Object.class)]
+	Annotations of field: [@annotations.Column(name="", SQLType=1111)]
 
 	private airlines.entities.TechnicalPassport technicalPassport
-	Annotations of field: [@annotations.Unique(constraintName=""), @annotations.Relation(name="", target=java.lang.Object.class, type=ONE_TO_ONE)]
+	Annotations of field: [@annotations.Relation(target=annotations.Relation$NullObject.class, type=ONE_TO_ONE)]
 
 Constructors of class: 
 
@@ -66,58 +66,58 @@ Methods of class:
 	public void airlines.entities.Airplane.setID(java.lang.Long) 
 	Annotations of method: [] 
 
-	private void airlines.entities.Airplane.checkNearestOperationDate(java.time.LocalDate) 
-	Annotations of method: [] 
-
-	public java.time.LocalDate airlines.entities.Airplane.getMaidenFlightDate() 
-	Annotations of method: [] 
-
-	public void airlines.entities.Airplane.setMaidenFlightDate(java.time.LocalDate) 
-	Annotations of method: [] 
-
-	public java.time.LocalDate airlines.entities.Airplane.getRegistrationDate() 
-	Annotations of method: [] 
-
-	public java.lang.String airlines.entities.Airplane.getRegistrationNumber() 
-	Annotations of method: [] 
-
-	private void airlines.entities.Airplane.checkRegistrationDate(java.time.LocalDate) 
-	Annotations of method: [] 
-
-	private void airlines.entities.Airplane.checkMaidenFlightDate(java.time.LocalDate) 
-	Annotations of method: [] 
-
-	public airlines.entities.TechnicalPassport airlines.entities.Airplane.getTechnicalPassport() 
-	Annotations of method: [] 
-
-	public java.time.LocalDate airlines.entities.Airplane.getNearestOperationDate() 
-	Annotations of method: [] 
-
-	public void airlines.entities.Airplane.setTechnicalPassport(airlines.entities.TechnicalPassport) 
-	Annotations of method: [] 
-
-	public void airlines.entities.Airplane.setRegistrationDate(java.time.LocalDate) 
-	Annotations of method: [] 
-
-	public void airlines.entities.Airplane.setNearestOperationDate(java.time.LocalDate) 
-	Annotations of method: [] 
-
-	private void airlines.entities.Airplane.checkDate(java.time.LocalDate,java.util.function.BiPredicate,java.time.LocalDate[]) 
-	Annotations of method: [] 
-
-	private void airlines.entities.Airplane.checkRollingDate(java.time.LocalDate) 
+	public java.lang.String airlines.entities.Airplane.getAirlineName() 
 	Annotations of method: [] 
 
 	public java.time.LocalDate airlines.entities.Airplane.getRollingDate() 
 	Annotations of method: [] 
 
-	public void airlines.entities.Airplane.setAirlineName(java.lang.String) 
-	Annotations of method: [] 
-
 	public void airlines.entities.Airplane.setRollingDate(java.time.LocalDate) 
 	Annotations of method: [] 
 
-	public java.lang.String airlines.entities.Airplane.getAirlineName() 
+	public void airlines.entities.Airplane.setAirlineName(java.lang.String) 
+	Annotations of method: [] 
+
+	private void airlines.entities.Airplane.checkRollingDate(java.time.LocalDate) 
+	Annotations of method: [] 
+
+	private void airlines.entities.Airplane.checkDate(java.time.LocalDate,java.util.function.BiPredicate,java.time.LocalDate[]) 
+	Annotations of method: [] 
+
+	private void airlines.entities.Airplane.checkRegistrationDate(java.time.LocalDate) 
+	Annotations of method: [] 
+
+	private void airlines.entities.Airplane.checkNearestOperationDate(java.time.LocalDate) 
+	Annotations of method: [] 
+
+	public void airlines.entities.Airplane.setMaidenFlightDate(java.time.LocalDate) 
+	Annotations of method: [] 
+
+	public void airlines.entities.Airplane.setRegistrationDate(java.time.LocalDate) 
+	Annotations of method: [] 
+
+	public java.time.LocalDate airlines.entities.Airplane.getNearestOperationDate() 
+	Annotations of method: [] 
+
+	public void airlines.entities.Airplane.setNearestOperationDate(java.time.LocalDate) 
+	Annotations of method: [] 
+
+	public airlines.entities.TechnicalPassport airlines.entities.Airplane.getTechnicalPassport() 
+	Annotations of method: [] 
+
+	public void airlines.entities.Airplane.setTechnicalPassport(airlines.entities.TechnicalPassport) 
+	Annotations of method: [] 
+
+	public java.time.LocalDate airlines.entities.Airplane.getRegistrationDate() 
+	Annotations of method: [] 
+
+	private void airlines.entities.Airplane.checkMaidenFlightDate(java.time.LocalDate) 
+	Annotations of method: [] 
+
+	public java.lang.String airlines.entities.Airplane.getRegistrationNumber() 
+	Annotations of method: [] 
+
+	public java.time.LocalDate airlines.entities.Airplane.getMaidenFlightDate() 
 	Annotations of method: [] 
 
 --------------
@@ -131,16 +131,16 @@ General info
 Field of class: 
 
 	private java.lang.Long ID
-	Annotations of field: [@annotations.AutoIncrementable(name=""), @annotations.PrimaryKey(constraintName="")]
+	Annotations of field: [@annotations.PrimaryKey(constraintName=""), @annotations.AutoIncrement(cache=(byte)0x01, minValue=1L, maxValue=9223372036854775807L, incrementBy=1L, name="SERIAL", start=1L, cycle=false, ownedBy=annotations.AutoIncrement$NullObject.class)]
 
 	private final airlines.userTypes.AirportICAO icaoID
-	Annotations of field: [@annotations.Column(name="", target=java.lang.Object.class), @annotations.Unique(constraintName="")]
+	Annotations of field: [@annotations.Unique(constraintName=""), @annotations.NotNull()]
 
 	private airlines.userTypes.IATA iataID
-	Annotations of field: [@annotations.Column(name="", target=java.lang.Object.class), @annotations.Unique(constraintName="")]
+	Annotations of field: [@annotations.Column(name="", SQLType=1111)]
 
 	private airlines.userTypes.geographic.GeographicPosition position
-	Annotations of field: [@annotations.Column(name="", target=java.lang.Object.class), @annotations.Unique(constraintName="")]
+	Annotations of field: [@annotations.Column(name="", SQLType=1111)]
 
 Constructors of class: 
 
@@ -161,13 +161,19 @@ Methods of class:
 	public int airlines.entities.Airport.hashCode() 
 	Annotations of method: [] 
 
+	public java.lang.Long airlines.entities.Airport.getID() 
+	Annotations of method: [] 
+
+	public void airlines.entities.Airport.setID(java.lang.Long) 
+	Annotations of method: [] 
+
 	public airlines.userTypes.geographic.GeographicPosition airlines.entities.Airport.getPosition() 
 	Annotations of method: [] 
 
-	public airlines.userTypes.IATA airlines.entities.Airport.getIataID() 
+	public airlines.userTypes.AirportICAO airlines.entities.Airport.getIcaoID() 
 	Annotations of method: [] 
 
-	public airlines.userTypes.AirportICAO airlines.entities.Airport.getIcaoID() 
+	public airlines.userTypes.IATA airlines.entities.Airport.getIataID() 
 	Annotations of method: [] 
 
 	public void airlines.entities.Airport.setIataID(airlines.userTypes.IATA) 
@@ -179,7 +185,7 @@ Methods of class:
 --------------
 General info
 	Class: public class airlines.entities.Flight
-	Annotations: [@annotations.Entity(name="")]
+	Annotations: [@annotations.Entity(name=""), @annotations.ChecksTable({@annotations.CheckTable(constraintName="", first=@annotations.Expression(SQLType=1111, expression="${start}"), type=<, second=@annotations.Expression(SQLType=1111, expression="{end}")), @annotations.CheckTable(constraintName="", first=@annotations.Expression(SQLType=1111, expression="${realStartTime}"), type=<, second=@annotations.Expression(SQLType=1111, expression="{realEndTime}"))})]
 	Superclass: public class java.lang.Object
 	Interfaces: []
 	Additional attributes: 
@@ -187,31 +193,31 @@ General info
 Field of class: 
 
 	private java.lang.Long ID
-	Annotations of field: [@annotations.AutoIncrementable(name=""), @annotations.PrimaryKey(constraintName="")]
+	Annotations of field: [@annotations.PrimaryKey(constraintName=""), @annotations.AutoIncrement(cache=(byte)0x01, minValue=1L, maxValue=9223372036854775807L, incrementBy=1L, name="SERIAL", start=1L, cycle=false, ownedBy=annotations.AutoIncrement$NullObject.class)]
 
 	private final airlines.entities.Route route
-	Annotations of field: [@annotations.Relation(name="", target=java.lang.Object.class, type=MANY_TO_ONE)]
+	Annotations of field: [@annotations.Relation(target=annotations.Relation$NullObject.class, type=MANY_TO_ONE)]
 
 	private java.time.LocalDateTime start
-	Annotations of field: [@annotations.Column(name="", target=java.lang.Object.class)]
+	Annotations of field: [@annotations.Column(name="", SQLType=1111)]
 
 	private java.time.LocalDateTime end
-	Annotations of field: [@annotations.Column(name="", target=java.lang.Object.class)]
+	Annotations of field: [@annotations.Column(name="", SQLType=1111)]
 
 	private java.time.LocalDateTime realStartTime
-	Annotations of field: [@annotations.Column(name="", target=java.lang.Object.class)]
+	Annotations of field: [@annotations.Column(name="", SQLType=1111)]
 
 	private java.time.LocalDateTime realEndTime
-	Annotations of field: [@annotations.Column(name="", target=java.lang.Object.class)]
+	Annotations of field: [@annotations.Column(name="", SQLType=1111)]
 
 	private java.lang.Boolean successful
-	Annotations of field: [@annotations.Column(name="", target=java.lang.Object.class)]
+	Annotations of field: [@annotations.Column(name="", SQLType=1111)]
 
 	private airlines.entities.FlightPassport flightPassport
-	Annotations of field: [@annotations.Unique(constraintName=""), @annotations.Relation(name="", target=java.lang.Object.class, type=ONE_TO_ONE)]
+	Annotations of field: [@annotations.Relation(target=annotations.Relation$NullObject.class, type=ONE_TO_ONE)]
 
 	private java.util.Set plainTickets
-	Annotations of field: [@annotations.Relation(name="", target=airlines.entities.PlainTicket.class, type=ONE_TO_MANY)]
+	Annotations of field: [@annotations.Relation(target=airlines.entities.PlainTicket.class, type=MANY_TO_MANY)]
 
 Constructors of class: 
 
@@ -253,34 +259,25 @@ Methods of class:
 	public void airlines.entities.Flight.setID(java.lang.Long) 
 	Annotations of method: [] 
 
-	public void airlines.entities.Flight.setRealEndTime(java.time.LocalDateTime) 
-	Annotations of method: [] 
-
-	public airlines.entities.Route airlines.entities.Flight.getRoute() 
-	Annotations of method: [] 
-
-	public java.lang.Boolean airlines.entities.Flight.getSuccessful() 
+	private static void airlines.entities.Flight.checkData(java.time.LocalDateTime,java.time.LocalDateTime) 
 	Annotations of method: [] 
 
 	public java.time.LocalDateTime airlines.entities.Flight.getStart() 
 	Annotations of method: [] 
 
-	public void airlines.entities.Flight.setEnd(java.time.LocalDateTime) 
-	Annotations of method: [] 
-
-	public java.time.LocalDateTime airlines.entities.Flight.getEnd() 
-	Annotations of method: [] 
-
-	public void airlines.entities.Flight.setRealStartTime(java.time.LocalDateTime) 
-	Annotations of method: [] 
-
-	private static void airlines.entities.Flight.checkData(java.time.LocalDateTime,java.time.LocalDateTime) 
+	public java.lang.Boolean airlines.entities.Flight.getSuccessful() 
 	Annotations of method: [] 
 
 	public java.time.LocalDateTime airlines.entities.Flight.getRealStartTime() 
 	Annotations of method: [] 
 
-	public java.time.LocalDateTime airlines.entities.Flight.getRealEndTime() 
+	public airlines.entities.Route airlines.entities.Flight.getRoute() 
+	Annotations of method: [] 
+
+	public void airlines.entities.Flight.setFlightPassport(airlines.entities.FlightPassport) 
+	Annotations of method: [] 
+
+	public void airlines.entities.Flight.setRealEndTime(java.time.LocalDateTime) 
 	Annotations of method: [] 
 
 	public airlines.entities.FlightPassport airlines.entities.Flight.getFlightPassport() 
@@ -289,10 +286,19 @@ Methods of class:
 	public void airlines.entities.Flight.clearTickets() 
 	Annotations of method: [] 
 
+	public void airlines.entities.Flight.setRealStartTime(java.time.LocalDateTime) 
+	Annotations of method: [] 
+
+	public java.time.LocalDateTime airlines.entities.Flight.getRealEndTime() 
+	Annotations of method: [] 
+
+	public java.time.LocalDateTime airlines.entities.Flight.getEnd() 
+	Annotations of method: [] 
+
 	public void airlines.entities.Flight.setSuccessful(java.lang.Boolean) 
 	Annotations of method: [] 
 
-	public void airlines.entities.Flight.setFlightPassport(airlines.entities.FlightPassport) 
+	public void airlines.entities.Flight.setEnd(java.time.LocalDateTime) 
 	Annotations of method: [] 
 
 --------------
@@ -306,19 +312,19 @@ General info
 Field of class: 
 
 	private java.lang.Long ID
-	Annotations of field: [@annotations.AutoIncrementable(name=""), @annotations.PrimaryKey(constraintName="")]
+	Annotations of field: [@annotations.PrimaryKey(constraintName=""), @annotations.AutoIncrement(cache=(byte)0x01, minValue=1L, maxValue=9223372036854775807L, incrementBy=1L, name="SERIAL", start=1L, cycle=false, ownedBy=annotations.AutoIncrement$NullObject.class)]
 
 	private final java.lang.String flightPassportID
-	Annotations of field: [@annotations.Column(name="", target=java.lang.Object.class), @annotations.Unique(constraintName="")]
+	Annotations of field: [@annotations.NotNull(), @annotations.Unique(constraintName="")]
 
 	private airlines.entities.Airplane airplane
-	Annotations of field: [@annotations.Relation(name="", target=java.lang.Object.class, type=MANY_TO_ONE)]
+	Annotations of field: [@annotations.Relation(target=annotations.Relation$NullObject.class, type=MANY_TO_ONE)]
 
 	private java.lang.String operatedCompany
-	Annotations of field: [@annotations.Column(name="", target=java.lang.Object.class)]
+	Annotations of field: [@annotations.Column(name="", SQLType=1111)]
 
 	private java.util.Set staffs
-	Annotations of field: [@annotations.Relation(name="", target=airlines.entities.Staff.class, type=ONE_TO_MANY)]
+	Annotations of field: [@annotations.Relation(target=airlines.entities.Staff.class, type=MANY_TO_MANY)]
 
 Constructors of class: 
 
@@ -348,19 +354,22 @@ Methods of class:
 	public java.lang.String airlines.entities.FlightPassport.getOperatedCompany() 
 	Annotations of method: [] 
 
-	public void airlines.entities.FlightPassport.setAirplane(airlines.entities.Airplane) 
+	public void airlines.entities.FlightPassport.setOperatedCompany(java.lang.String) 
 	Annotations of method: [] 
 
-	public boolean airlines.entities.FlightPassport.addStaff(airlines.entities.Staff) 
+	public void airlines.entities.FlightPassport.clearStaffs() 
 	Annotations of method: [] 
 
 	public boolean airlines.entities.FlightPassport.addStaff(java.util.Collection) 
 	Annotations of method: [] 
 
-	public airlines.entities.Airplane airlines.entities.FlightPassport.getAirplane() 
+	public boolean airlines.entities.FlightPassport.addStaff(airlines.entities.Staff) 
 	Annotations of method: [] 
 
-	public void airlines.entities.FlightPassport.setOperatedCompany(java.lang.String) 
+	public boolean airlines.entities.FlightPassport.removeStaffs(java.util.Collection) 
+	Annotations of method: [] 
+
+	public airlines.entities.Airplane airlines.entities.FlightPassport.getAirplane() 
 	Annotations of method: [] 
 
 	public java.util.List airlines.entities.FlightPassport.getStaffs() 
@@ -369,13 +378,10 @@ Methods of class:
 	public boolean airlines.entities.FlightPassport.removeStaff(airlines.entities.Staff) 
 	Annotations of method: [] 
 
+	public void airlines.entities.FlightPassport.setAirplane(airlines.entities.Airplane) 
+	Annotations of method: [] 
+
 	public java.lang.String airlines.entities.FlightPassport.getFlightPassportID() 
-	Annotations of method: [] 
-
-	public void airlines.entities.FlightPassport.clearStaffs() 
-	Annotations of method: [] 
-
-	public boolean airlines.entities.FlightPassport.removeStaffs(java.util.Collection) 
 	Annotations of method: [] 
 
 --------------
@@ -389,19 +395,19 @@ General info
 Field of class: 
 
 	private java.lang.Long ID
-	Annotations of field: [@annotations.AutoIncrementable(name=""), @annotations.PrimaryKey(constraintName="")]
+	Annotations of field: [@annotations.PrimaryKey(constraintName=""), @annotations.AutoIncrement(cache=(byte)0x01, minValue=1L, maxValue=9223372036854775807L, incrementBy=1L, name="SERIAL", start=1L, cycle=false, ownedBy=annotations.AutoIncrement$NullObject.class)]
 
 	private final java.lang.String passportID
-	Annotations of field: [@annotations.Column(name="", target=java.lang.Object.class), @annotations.Unique(constraintName="")]
+	Annotations of field: [@annotations.Unique(constraintName=""), @annotations.NotNull()]
 
 	private airlines.userTypes.FullName fullName
-	Annotations of field: [@annotations.Column(name="", target=java.lang.Object.class)]
+	Annotations of field: [@annotations.Column(name="", SQLType=1111)]
 
 	private airlines.userTypes.Address address
-	Annotations of field: [@annotations.Column(name="", target=java.lang.Object.class)]
+	Annotations of field: [@annotations.Column(name="", SQLType=1111)]
 
 	private java.lang.String phoneNumber
-	Annotations of field: [@annotations.Column(name="", target=java.lang.Object.class)]
+	Annotations of field: [@annotations.Column(name="", SQLType=1111)]
 
 Constructors of class: 
 
@@ -434,19 +440,19 @@ Methods of class:
 	public void airlines.entities.Passenger.setID(java.lang.Long) 
 	Annotations of method: [] 
 
-	public void airlines.entities.Passenger.setAddress(airlines.userTypes.Address) 
-	Annotations of method: [] 
-
-	public void airlines.entities.Passenger.setPhoneNumber(java.lang.String) 
-	Annotations of method: [] 
-
-	public void airlines.entities.Passenger.setFullName(airlines.userTypes.FullName) 
+	public java.lang.String airlines.entities.Passenger.getPassportID() 
 	Annotations of method: [] 
 
 	public java.lang.String airlines.entities.Passenger.getPhoneNumber() 
 	Annotations of method: [] 
 
-	public java.lang.String airlines.entities.Passenger.getPassportID() 
+	public void airlines.entities.Passenger.setFullName(airlines.userTypes.FullName) 
+	Annotations of method: [] 
+
+	public void airlines.entities.Passenger.setPhoneNumber(java.lang.String) 
+	Annotations of method: [] 
+
+	public void airlines.entities.Passenger.setAddress(airlines.userTypes.Address) 
 	Annotations of method: [] 
 
 --------------
@@ -460,22 +466,22 @@ General info
 Field of class: 
 
 	private java.lang.Long ID
-	Annotations of field: [@annotations.AutoIncrementable(name=""), @annotations.PrimaryKey(constraintName="")]
+	Annotations of field: [@annotations.PrimaryKey(constraintName=""), @annotations.AutoIncrement(cache=(byte)0x01, minValue=1L, maxValue=9223372036854775807L, incrementBy=1L, name="SERIAL", start=1L, cycle=false, ownedBy=annotations.AutoIncrement$NullObject.class)]
 
 	private final java.lang.String ticketID
-	Annotations of field: [@annotations.Column(name="", target=java.lang.Object.class), @annotations.Unique(constraintName="")]
+	Annotations of field: [@annotations.NotNull(), @annotations.Unique(constraintName="")]
 
 	private airlines.userTypes.TicketType ticketType
-	Annotations of field: [@annotations.Column(name="", target=java.lang.Object.class)]
+	Annotations of field: [@annotations.Column(name="", SQLType=1111)]
 
 	private java.lang.Double cost
-	Annotations of field: [@annotations.Column(name="", target=java.lang.Object.class)]
+	Annotations of field: [@annotations.Check(constraintName="", type=>=, expression=@annotations.Expression(SQLType=1111, expression="0.00")), @annotations.Numeric(scale=2, type=NUMERIC, precision=8)]
 
 	private java.lang.String place
-	Annotations of field: [@annotations.Column(name="", target=java.lang.Object.class), @annotations.Unique(constraintName="")]
+	Annotations of field: [@annotations.Column(name="", SQLType=1111)]
 
 	private airlines.entities.Passenger passenger
-	Annotations of field: [@annotations.Relation(name="", target=java.lang.Object.class, type=MANY_TO_ONE)]
+	Annotations of field: [@annotations.Relation(target=annotations.Relation$NullObject.class, type=MANY_TO_ONE)]
 
 Constructors of class: 
 
@@ -502,37 +508,37 @@ Methods of class:
 	public void airlines.entities.PlainTicket.setID(java.lang.Long) 
 	Annotations of method: [] 
 
+	public void airlines.entities.PlainTicket.setCost(java.lang.Double) 
+	Annotations of method: [] 
+
+	public airlines.entities.Passenger airlines.entities.PlainTicket.getPassenger() 
+	Annotations of method: [] 
+
+	public void airlines.entities.PlainTicket.setTicketType(airlines.userTypes.TicketType) 
+	Annotations of method: [] 
+
+	public java.lang.String airlines.entities.PlainTicket.getTicketID() 
+	Annotations of method: [] 
+
+	public void airlines.entities.PlainTicket.setPlace(java.lang.String) 
+	Annotations of method: [] 
+
+	public void airlines.entities.PlainTicket.setPassenger(airlines.entities.Passenger) 
+	Annotations of method: [] 
+
+	public java.lang.String airlines.entities.PlainTicket.getPlace() 
+	Annotations of method: [] 
+
 	public airlines.userTypes.TicketType airlines.entities.PlainTicket.getTicketType() 
 	Annotations of method: [] 
 
 	public java.lang.Double airlines.entities.PlainTicket.getCost() 
 	Annotations of method: [] 
 
-	public java.lang.String airlines.entities.PlainTicket.getPlace() 
-	Annotations of method: [] 
-
-	public void airlines.entities.PlainTicket.setPassenger(airlines.entities.Passenger) 
-	Annotations of method: [] 
-
-	public java.lang.String airlines.entities.PlainTicket.getTicketID() 
-	Annotations of method: [] 
-
-	public airlines.entities.Passenger airlines.entities.PlainTicket.getPassenger() 
-	Annotations of method: [] 
-
-	public void airlines.entities.PlainTicket.setPlace(java.lang.String) 
-	Annotations of method: [] 
-
-	public void airlines.entities.PlainTicket.setTicketType(airlines.userTypes.TicketType) 
-	Annotations of method: [] 
-
-	public void airlines.entities.PlainTicket.setCost(java.lang.Double) 
-	Annotations of method: [] 
-
 --------------
 General info
 	Class: public class airlines.entities.Route
-	Annotations: [@annotations.Entity(name="")]
+	Annotations: [@annotations.Entity(name=""), @annotations.CheckTable(constraintName="", first=@annotations.Expression(SQLType=1111, expression="${first}"), type=<>, second=@annotations.Expression(SQLType=1111, expression="${to}"))]
 	Superclass: public class java.lang.Object
 	Interfaces: []
 	Additional attributes: 
@@ -540,13 +546,13 @@ General info
 Field of class: 
 
 	private java.lang.Long ID
-	Annotations of field: [@annotations.AutoIncrementable(name=""), @annotations.PrimaryKey(constraintName="")]
+	Annotations of field: [@annotations.PrimaryKey(constraintName=""), @annotations.AutoIncrement(cache=(byte)0x01, minValue=1L, maxValue=9223372036854775807L, incrementBy=1L, name="SERIAL", start=1L, cycle=false, ownedBy=annotations.AutoIncrement$NullObject.class)]
 
 	private final airlines.entities.Airport from
-	Annotations of field: [@annotations.Relation(name="", target=java.lang.Object.class, type=MANY_TO_ONE), @annotations.Unique(constraintName="route_unique")]
+	Annotations of field: [@annotations.Unique(constraintName="airports_unique"), @annotations.Relation(target=annotations.Relation$NullObject.class, type=MANY_TO_ONE)]
 
 	private final airlines.entities.Airport to
-	Annotations of field: [@annotations.Relation(name="", target=java.lang.Object.class, type=MANY_TO_ONE), @annotations.Unique(constraintName="route_unique")]
+	Annotations of field: [@annotations.Unique(constraintName="airports_unique"), @annotations.Relation(target=annotations.Relation$NullObject.class, type=MANY_TO_ONE)]
 
 Constructors of class: 
 
@@ -596,22 +602,22 @@ General info
 Field of class: 
 
 	private java.lang.Long ID
-	Annotations of field: [@annotations.AutoIncrementable(name=""), @annotations.PrimaryKey(constraintName="")]
+	Annotations of field: [@annotations.PrimaryKey(constraintName=""), @annotations.AutoIncrement(cache=(byte)0x01, minValue=1L, maxValue=9223372036854775807L, incrementBy=1L, name="SERIAL", start=1L, cycle=false, ownedBy=annotations.AutoIncrement$NullObject.class)]
 
 	private final java.lang.String passportID
-	Annotations of field: [@annotations.Column(name="", target=java.lang.Object.class), @annotations.Unique(constraintName="")]
+	Annotations of field: [@annotations.Unique(constraintName=""), @annotations.NotNull()]
 
 	private airlines.userTypes.FullName fullName
-	Annotations of field: [@annotations.Column(name="", target=java.lang.Object.class)]
+	Annotations of field: [@annotations.Column(name="", SQLType=1111)]
 
 	private airlines.userTypes.Address address
-	Annotations of field: [@annotations.Column(name="", target=java.lang.Object.class)]
+	Annotations of field: [@annotations.Column(name="", SQLType=1111)]
 
 	private java.lang.Integer flightHours
-	Annotations of field: [@annotations.Column(name="", target=java.lang.Object.class)]
+	Annotations of field: [@annotations.Check(constraintName="", type=>=, expression=@annotations.Expression(SQLType=1111, expression="0"))]
 
 	private airlines.userTypes.StaffPosition position
-	Annotations of field: [@annotations.Column(name="", target=java.lang.Object.class)]
+	Annotations of field: [@annotations.Column(name="", SQLType=1111)]
 
 Constructors of class: 
 
@@ -650,13 +656,13 @@ Methods of class:
 	public void airlines.entities.Staff.setPosition(airlines.userTypes.StaffPosition) 
 	Annotations of method: [] 
 
-	public void airlines.entities.Staff.setAddress(airlines.userTypes.Address) 
+	public java.lang.String airlines.entities.Staff.getPassportID() 
 	Annotations of method: [] 
 
 	public void airlines.entities.Staff.setFullName(airlines.userTypes.FullName) 
 	Annotations of method: [] 
 
-	public java.lang.String airlines.entities.Staff.getPassportID() 
+	public void airlines.entities.Staff.setAddress(airlines.userTypes.Address) 
 	Annotations of method: [] 
 
 	public void airlines.entities.Staff.setFlightHours(java.lang.Integer) 
@@ -676,16 +682,16 @@ General info
 Field of class: 
 
 	private java.lang.Long ID
-	Annotations of field: [@annotations.AutoIncrementable(name=""), @annotations.PrimaryKey(constraintName="")]
+	Annotations of field: [@annotations.PrimaryKey(constraintName=""), @annotations.AutoIncrement(cache=(byte)0x01, minValue=1L, maxValue=9223372036854775807L, incrementBy=1L, name="SERIAL", start=1L, cycle=false, ownedBy=annotations.AutoIncrement$NullObject.class)]
 
 	private final airlines.userTypes.TechnicalPassportID technicalPassportID
-	Annotations of field: [@annotations.Column(name="", target=java.lang.Object.class), @annotations.Unique(constraintName="")]
+	Annotations of field: [@annotations.Unique(constraintName=""), @annotations.NotNull()]
 
 	private java.time.OffsetDateTime lastCheckDate
-	Annotations of field: [@annotations.Column(name="", target=java.lang.Object.class)]
+	Annotations of field: [@annotations.Column(name="", SQLType=1111)]
 
 	private java.lang.Boolean isReady
-	Annotations of field: [@annotations.Column(name="", target=java.lang.Object.class)]
+	Annotations of field: [@annotations.Column(name="", SQLType=1111)]
 
 Constructors of class: 
 
@@ -712,18 +718,18 @@ Methods of class:
 	public void airlines.entities.TechnicalPassport.setID(java.lang.Long) 
 	Annotations of method: [] 
 
-	public airlines.userTypes.TechnicalPassportID airlines.entities.TechnicalPassport.getTechnicalPassportID() 
-	Annotations of method: [] 
-
-	public void airlines.entities.TechnicalPassport.setReady(java.lang.Boolean) 
+	public java.time.OffsetDateTime airlines.entities.TechnicalPassport.getLastCheckDate() 
 	Annotations of method: [] 
 
 	public java.lang.Boolean airlines.entities.TechnicalPassport.getReady() 
 	Annotations of method: [] 
 
-	public java.time.OffsetDateTime airlines.entities.TechnicalPassport.getLastCheckDate() 
+	public void airlines.entities.TechnicalPassport.setLastCheckDate(java.time.OffsetDateTime) 
 	Annotations of method: [] 
 
-	public void airlines.entities.TechnicalPassport.setLastCheckDate(java.time.OffsetDateTime) 
+	public void airlines.entities.TechnicalPassport.setReady(java.lang.Boolean) 
+	Annotations of method: [] 
+
+	public airlines.userTypes.TechnicalPassportID airlines.entities.TechnicalPassport.getTechnicalPassportID() 
 	Annotations of method: [] 
 

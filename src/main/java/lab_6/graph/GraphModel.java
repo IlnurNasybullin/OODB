@@ -51,10 +51,8 @@ public class GraphModel extends DefaultDirectedGraph<Vertex, Edge> {
 
     private void fillMap(Class<?> searchClass) {
         for (Field field: searchClass.getDeclaredFields()) {
-            for (Annotation annotation: field.getDeclaredAnnotations()) {
-                if (annotation instanceof Relation) {
-                    fields.add(field);
-                }
+            if (ReflectionUtils.hasAnnotation(field, Relation.class)) {
+                fields.add(field);
             }
         }
     }
@@ -63,7 +61,7 @@ public class GraphModel extends DefaultDirectedGraph<Vertex, Edge> {
         for (Field field: fields) {
             Relation annotation = field.getAnnotation(Relation.class);
             Class<?> targetClass = annotation.target();
-            Class<?> fieldTargetClass = (targetClass == Relation.DEFAULT_CLASS) ?
+            Class<?> fieldTargetClass = (targetClass == Relation.DEFAULT_TARGET) ?
                     field.getType() : targetClass;
             addEdge(VertexFactory.get(field.getDeclaringClass()), VertexFactory.get(fieldTargetClass), new Edge(annotation.type()));
         }

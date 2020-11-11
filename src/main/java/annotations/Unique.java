@@ -5,8 +5,11 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-@Target(ElementType.FIELD)
+@Column
 @Retention(RetentionPolicy.RUNTIME)
+@Target({ElementType.FIELD, ElementType.ANNOTATION_TYPE})
 public @interface Unique {
-    String constraintName() default "";
+    String DEFAULT_CONSTRAINT_NAME = "";
+
+    String constraintName() default DEFAULT_CONSTRAINT_NAME;
 }

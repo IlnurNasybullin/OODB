@@ -8,7 +8,7 @@ public interface TableData {
     String from = "from";
     String to = "to";
     String geographicPosition = "position";
-    String length = "\"length\"";
+    String length = "\"maxLength\"";
     String altitude = "altitude";
     String city = "city";
     String ID = "\"AutoIncrementable\"";

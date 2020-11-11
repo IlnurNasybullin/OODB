@@ -5,16 +5,17 @@ import annotations.*;
 import java.math.BigDecimal;
 import java.math.MathContext;
 import java.util.Objects;
-
+@CompositeType
 public abstract class Coordinate {
-
-    @TypeComponent
+    @NotNull
     protected final short degrees;
-    @TypeComponent
-    @Range(minValue = @MinValue(byteValue = 0), maxValue = @MaxValue(byteValue = DEGREE_TO_MINUTES))
+    @Check(type = CheckType.MORE_AND_EQUAL, expression = @Expression(expression = "0"))
+    @Check(type = CheckType.LESS, expression = @Expression(expression = "60"))
+    @NotNull
     protected final byte minutes;
-    @TypeComponent
-    @Range(minValue = @MinValue(doubleValue = 0d), maxValue = @MaxValue(doubleValue = MINUTES_TO_SECONDS))
+    @Check(type = CheckType.MORE_AND_EQUAL, expression = @Expression(expression = "0"))
+    @Check(type = CheckType.LESS, expression = @Expression(expression = "60"))
+    @NotNull
     protected final double seconds;
 
     public static final int DEGREE_TO_MINUTES = 60;

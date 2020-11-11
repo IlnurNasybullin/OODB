@@ -1,21 +1,25 @@
 package airlines.userTypes;
 
-import annotations.TypeComponent;
-import annotations.UserType;
+import annotations.CompositeType;
+import annotations.NotNull;
+import annotations.POSIX;
 
 import java.util.Objects;
 import java.util.function.Predicate;
 import java.util.regex.Pattern;
-
-@UserType
+@CompositeType
 public class IATA {
 
-    @TypeComponent
+    public static final int IATA_LENGTH = 3;
+    public static final String REGEX = "[A-Z0-9]{3}";
+
+    @NotNull
+    @POSIX(regex = REGEX, length = IATA_LENGTH)
     private final String ID;
 
     private final static Predicate<String> lengthCheck =
-            (element -> !Objects.isNull(element) && element.length() == 3);
-    private final static Predicate<String> pattern = Pattern.compile("[A-Z0-9]{3}").asPredicate();
+            (element -> !Objects.isNull(element) && element.length() == IATA_LENGTH);
+    private final static Predicate<String> pattern = Pattern.compile(REGEX).asPredicate();
 
     private IATA() {
         this("000");

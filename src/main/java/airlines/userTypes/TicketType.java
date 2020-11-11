@@ -1,11 +1,9 @@
 package airlines.userTypes;
 
-import annotations.Column;
-import annotations.Entity;
+import annotations.EnumType;
 import annotations.TypeComponent;
-import annotations.UserType;
 
-@UserType
+@EnumType
 public enum TicketType {
     @TypeComponent
     FIRST,

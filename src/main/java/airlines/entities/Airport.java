@@ -4,25 +4,20 @@ import airlines.userTypes.AirportICAO;
 import airlines.userTypes.IATA;
 import airlines.userTypes.geographic.GeographicPosition;
 import annotations.*;
-import annotations.AutoIncrementable;
 
+import java.lang.annotation.Target;
 import java.util.Objects;
-
 @Entity
 public class Airport {
-
-    @AutoIncrementable
     @PrimaryKey
+    @AutoIncrement
     private Long ID;
-
-    @Column
     @Unique
+    @NotNull
     private final AirportICAO icaoID;
     @Column
-    @Unique
     private IATA iataID;
     @Column
-    @Unique
     private GeographicPosition position;
 
     private Airport() {
@@ -31,6 +26,14 @@ public class Airport {
 
     public Airport(AirportICAO icaoID) {
         this.icaoID = icaoID;
+    }
+
+    public Long getID() {
+        return ID;
+    }
+
+    public void setID(Long ID) {
+        this.ID = ID;
     }
 
     public AirportICAO getIcaoID() {

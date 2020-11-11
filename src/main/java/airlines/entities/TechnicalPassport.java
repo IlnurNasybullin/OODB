@@ -5,15 +5,14 @@ import annotations.*;
 
 import java.time.OffsetDateTime;
 import java.util.Objects;
+
 @Entity
 public class TechnicalPassport {
-
-    @AutoIncrementable
     @PrimaryKey
+    @AutoIncrement
     private Long ID;
-
-    @Column
     @Unique
+    @NotNull
     private final TechnicalPassportID technicalPassportID;
     @Column
     private OffsetDateTime lastCheckDate;

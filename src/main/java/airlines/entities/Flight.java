@@ -1,21 +1,19 @@
 package airlines.entities;
 
 import annotations.*;
-import lab_6.graph.RelationType;
 
 import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
-
 @Entity
+@CheckTable(first = @Expression(expression = "${start}"), type = CheckType.LESS, second = @Expression(expression = "{end}"))
+@CheckTable(first = @Expression(expression = "${realStartTime}"), type = CheckType.LESS, second = @Expression(expression = "{realEndTime}"))
 public class Flight {
-
-    @AutoIncrementable
     @PrimaryKey
+    @AutoIncrement
     private Long ID;
-
     @Relation(type = RelationType.MANY_TO_ONE)
     private final Route route;
     @Column
@@ -28,10 +26,9 @@ public class Flight {
     private LocalDateTime realEndTime;
     @Column
     private Boolean successful;
-    @Unique
     @Relation(type = RelationType.ONE_TO_ONE)
     private FlightPassport flightPassport;
-    @Relation(target = PlainTicket.class, type = RelationType.ONE_TO_MANY)
+    @Relation(type = RelationType.MANY_TO_MANY, target = PlainTicket.class)
     private Set<PlainTicket> plainTickets;
 
     private Flight() {

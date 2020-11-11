@@ -2,11 +2,10 @@ package airlines.userTypes.geographic;
 
 import annotations.*;
 
-import static airlines.userTypes.geographic.Latitude.MAX_DEGREE;
-import static airlines.userTypes.geographic.Latitude.MIN_DEGREE;
-
-@UserType(targetClass = Coordinate.class, constraints = @Constraint(fieldName = "degrees", typeName = "latitude_degree",
-        range = @Range(minValue = @MinValue(doubleValue = MIN_DEGREE), maxValue = @MaxValue(doubleValue = MAX_DEGREE))))
+@CompositeType
+@CheckTable(first = @Expression(expression = "${degree}"), type = CheckType.MORE, second = @Expression(expression = "-90"))
+@CheckTable(first = @Expression(expression = "${degree}"), type = CheckType.LESS, second = @Expression(expression = "90"))
+@Rename(fieldName = "degrees", sqlName = "latitude_degree")
 public class Latitude extends Coordinate {
 
     transient public static final double MIN_DEGREE = -90d;

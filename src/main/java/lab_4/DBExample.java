@@ -88,7 +88,7 @@ public class DBExample {
     private static String getHardSelectQuery(String column) {
         String jsonFunction = (column.equals(json_column)) ? "json_array_elements" : "jsonb_array_elements";
         String query = "WITH json_table AS (SELECT elements -> 'from' -> 'position' ->> 'city' AS city, " +
-                        "CAST(elements -> 'from' -> 'position' -> 'altitude' ->> 'length' AS REAL) AS len " +
+                        "CAST(elements -> 'from' -> 'position' -> 'altitude' ->> 'maxLength' AS REAL) AS len " +
                         String.format("FROM %s CROSS JOIN %s(%s) AS elements) SELECT DISTINCT city, len FROM json_table WHERE len > 300 ORDER BY LEN", tableName, jsonFunction, column);
 
         return query;

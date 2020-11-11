@@ -1,10 +1,14 @@
 package lab_6;
 
-import java.awt.*;
+import airlines.entities.Airport;
+import annotations.Column;
+import annotations.ReflectionUtils;
+
+import java.lang.reflect.Field;
 
 public class Test {
-    public static void main(String[] args) {
-        Color green = new Color(16, 16, 16);
-        System.out.println(Integer.toHexString(green.getRGB()).substring(2));
+    public static void main(String[] args) throws NoSuchFieldException {
+        Field field = Airport.class.getDeclaredField("ID");
+        System.out.println(ReflectionUtils.hasAnnotation(field, Column.class));
     }
 }

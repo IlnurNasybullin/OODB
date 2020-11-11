@@ -1,23 +1,27 @@
 package airlines.userTypes;
 
-import annotations.TypeComponent;
-import annotations.UserType;
+import annotations.CompositeType;
+import annotations.NotNull;
+import annotations.POSIX;
 
 import java.util.Objects;
 import java.util.function.Predicate;
 import java.util.regex.Pattern;
-
-@UserType
+@CompositeType
 public class AirportICAO {
 
     public final static AirportICAO DEFAULT = new AirportICAO();
 
-    @TypeComponent
+    public static final int ICAO_LENGTH = 4;
+    public static final String REGEX = "[A-Z0-9]{4}";
+
+    @NotNull
+    @POSIX(regex = REGEX, length = ICAO_LENGTH)
     private final String ID;
 
     private final static Predicate<String> lengthCheck =
-            (element -> !Objects.isNull(element) && element.length() == 4);
-    private final static Predicate<String> pattern = Pattern.compile("[A-Z0-9]{4}").asPredicate();
+            (element -> !Objects.isNull(element) && element.length() == ICAO_LENGTH);
+    private final static Predicate<String> pattern = Pattern.compile(REGEX).asPredicate();
 
     public static AirportICAO of(String ID) {
         check(ID);

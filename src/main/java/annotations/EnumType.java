@@ -4,13 +4,11 @@ import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
-import java.util.Objects;
 
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface UserType {
-    String name() default "";
-    Class<?>[] targetClass() default {};
+public @interface EnumType {
+    String DEFAULT_NAME = "";
 
-    Constraint[] constraints() default {};
+    String name() default DEFAULT_NAME;
 }

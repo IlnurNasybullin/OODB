@@ -1,21 +1,20 @@
 package airlines.entities;
 
 import annotations.*;
-import lab_6.graph.RelationType;
 
 import java.util.Objects;
+
 @Entity
+@CheckTable(first = @Expression(expression = "${first}"), type = CheckType.NOT_EQUAL, second = @Expression(expression = "${to}"))
 public class Route {
-
-    @AutoIncrementable
     @PrimaryKey
+    @AutoIncrement
     private Long ID;
-
+    @Unique(constraintName = "airports_unique")
     @Relation(type = RelationType.MANY_TO_ONE)
-    @Unique(constraintName = "route_unique")
     private final Airport from;
+    @Unique(constraintName = "airports_unique")
     @Relation(type = RelationType.MANY_TO_ONE)
-    @Unique(constraintName = "route_unique")
     private final Airport to;
 
     private Route() {
