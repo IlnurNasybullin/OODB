@@ -10,6 +10,7 @@ public class FlightPassport {
     private Long ID;
     @Column
     private final String flightPassportID;
+    @Column
     @Relation(type = RelationType.MANY_TO_ONE)
     private Airplane airplane;
     @Column
