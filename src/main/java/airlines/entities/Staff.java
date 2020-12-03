@@ -1,55 +1,17 @@
 package airlines.entities;
 
-import airlines.userTypes.Address;
-import airlines.userTypes.FullName;
 import airlines.userTypes.StaffPosition;
-import annotations.*;
-
-import java.util.Objects;
-
+import annotations.Column;
+import annotations.Entity;
 @Entity
-public class Staff {
-    @PrimaryKey
-    @AutoIncrement
-    private Long ID;
-    @Unique
-    @NotNull
-    private final String passportID;
+public class Staff extends Person {
     @Column
-    private FullName fullName;
-    @Column
-    private Address address;
-    @Check(type = CheckType.MORE_AND_EQUAL, expression = @Expression(expression = "0"))
     private Integer flightHours;
     @Column
     private StaffPosition position;
 
-    private Staff() {
-        this("");
-    }
-
-    public Staff(String passportID) {
-        this.passportID = passportID;
-    }
-
-    public Long getID() {
-        return ID;
-    }
-
-    public void setID(Long ID) {
-        this.ID = ID;
-    }
-
-    public String getPassportID() {
-        return passportID;
-    }
-
-    public FullName getFullName() {
-        return fullName;
-    }
-
-    public Address getAddress() {
-        return address;
+    protected Staff() {
+        super("");
     }
 
     public Integer getFlightHours() {
@@ -60,33 +22,15 @@ public class Staff {
         return position;
     }
 
-    public void setFullName(FullName fullName) {
-        this.fullName = fullName;
-    }
-
-    public void setAddress(Address address) {
-        this.address = address;
-    }
-
     public void setFlightHours(Integer flightHours) {
+        if (flightHours < 0) {
+            throw new IllegalArgumentException("Flight hours mustn't be less 0!");
+        }
         this.flightHours = flightHours;
     }
 
     public void setPosition(StaffPosition position) {
         this.position = position;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Staff staff = (Staff) o;
-        return passportID.equals(staff.passportID);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(passportID);
     }
 
     @Override

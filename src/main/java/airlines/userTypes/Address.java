@@ -1,25 +1,14 @@
 package airlines.userTypes;
 
-import annotations.CompositeType;
-import annotations.TypeComponent;
-
 import java.util.Objects;
 
-@CompositeType
 public class Address {
-    @TypeComponent
     private String country;
-    @TypeComponent
     private String region;
-    @TypeComponent
     private String city;
-    @TypeComponent
     private String street;
-    @TypeComponent
     private String house;
-    @TypeComponent
     private String flat;
-    @TypeComponent
     private String postalCode;
 
     public Address() { }

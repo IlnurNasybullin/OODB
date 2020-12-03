@@ -1,13 +1,8 @@
 package airlines.userTypes;
 
-import annotations.CompositeType;
-import annotations.NotNull;
-import annotations.POSIX;
-
 import java.util.Objects;
 import java.util.function.Predicate;
 import java.util.regex.Pattern;
-@CompositeType
 public class AirportICAO {
 
     public final static AirportICAO DEFAULT = new AirportICAO();
@@ -15,8 +10,6 @@ public class AirportICAO {
     public static final int ICAO_LENGTH = 4;
     public static final String REGEX = "[A-Z0-9]{4}";
 
-    @NotNull
-    @POSIX(regex = REGEX, length = ICAO_LENGTH)
     private final String ID;
 
     private final static Predicate<String> lengthCheck =

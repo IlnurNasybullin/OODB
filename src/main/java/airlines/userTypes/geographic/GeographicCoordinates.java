@@ -1,15 +1,8 @@
 package airlines.userTypes.geographic;
 
-import annotations.NotNull;
-import annotations.TypeComponent;
-import annotations.CompositeType;
-
 import java.util.Objects;
-@CompositeType
 public class GeographicCoordinates {
-    @NotNull
     private final Latitude latitude;
-    @NotNull
     private final Longitude longitude;
 
     public static final GeographicCoordinates DEFAULT = new GeographicCoordinates();

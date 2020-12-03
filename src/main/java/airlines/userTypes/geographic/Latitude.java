@@ -1,11 +1,5 @@
 package airlines.userTypes.geographic;
 
-import annotations.*;
-
-@CompositeType
-@CheckTable(first = @Expression(expression = "${degree}"), type = CheckType.MORE, second = @Expression(expression = "-90"))
-@CheckTable(first = @Expression(expression = "${degree}"), type = CheckType.LESS, second = @Expression(expression = "90"))
-@Rename(fieldName = "degrees", sqlName = "latitude_degree")
 public class Latitude extends Coordinate {
 
     transient public static final double MIN_DEGREE = -90d;

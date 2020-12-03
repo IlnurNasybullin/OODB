@@ -6,19 +6,18 @@ import annotations.*;
 import java.util.Objects;
 @Entity
 public class PlainTicket {
-    @PrimaryKey
-    @AutoIncrement
+    @ID
+    @Column
     private Long ID;
-    @NotNull
-    @Unique
+    @Column
     private final String ticketID;
     @Column
     private TicketType ticketType;
-    @Check(type = CheckType.MORE_AND_EQUAL, expression = @Expression(expression = "0.00"))
-    @Numeric(type = Numeric.SQLType.NUMERIC, precision = 8, scale = 2)
+    @Column
     private Double cost;
     @Column
     private String place;
+    @Column
     @Relation(type = RelationType.MANY_TO_ONE)
     private Passenger passenger;
 

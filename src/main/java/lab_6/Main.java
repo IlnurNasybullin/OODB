@@ -1,5 +1,7 @@
 package lab_6;
 
+import analyse.ClassAnalyzer;
+import analyse.ClassScanner;
 import com.mxgraph.layout.mxCircleLayout;
 import com.mxgraph.layout.mxIGraphLayout;
 import com.mxgraph.model.mxGeometry;
@@ -8,8 +10,6 @@ import com.mxgraph.util.mxCellRenderer;
 import com.mxgraph.util.mxConstants;
 import com.mxgraph.view.mxPerimeter;
 import com.mxgraph.view.mxStylesheet;
-import analyse.ClassAnalyzer;
-import analyse.ClassScanner;
 import lab_6.graph.Edge;
 import lab_6.graph.GraphModel;
 import lab_6.graph.Vertex;

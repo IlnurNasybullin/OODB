@@ -6,13 +6,9 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 import java.sql.Types;
 
-@Target({ElementType.FIELD, ElementType.ANNOTATION_TYPE})
+@Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Column {
-
-    String DEFAULT_NAME = "";
-    int DEFAULT_SQL_TYPE = Types.OTHER;
-
-    String name() default DEFAULT_NAME;
-    int SQLType() default DEFAULT_SQL_TYPE;
+    String name() default "";
+    int SQLType() default Types.OTHER;
 }

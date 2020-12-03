@@ -3,17 +3,17 @@ package airlines.entities;
 import airlines.userTypes.AirportICAO;
 import airlines.userTypes.IATA;
 import airlines.userTypes.geographic.GeographicPosition;
-import annotations.*;
+import annotations.Column;
+import annotations.Entity;
+import annotations.ID;
 
-import java.lang.annotation.Target;
 import java.util.Objects;
 @Entity
 public class Airport {
-    @PrimaryKey
-    @AutoIncrement
+    @ID
+    @Column
     private Long ID;
-    @Unique
-    @NotNull
+    @Column
     private final AirportICAO icaoID;
     @Column
     private IATA iataID;
@@ -25,6 +25,7 @@ public class Airport {
     }
 
     public Airport(AirportICAO icaoID) {
+        Objects.requireNonNull(icaoID);
         this.icaoID = icaoID;
     }
 

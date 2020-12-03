@@ -5,15 +5,14 @@ import annotations.*;
 import java.util.Objects;
 
 @Entity
-@CheckTable(first = @Expression(expression = "${first}"), type = CheckType.NOT_EQUAL, second = @Expression(expression = "${to}"))
 public class Route {
-    @PrimaryKey
-    @AutoIncrement
+    @ID
+    @Column
     private Long ID;
-    @Unique(constraintName = "airports_unique")
+    @Column
     @Relation(type = RelationType.MANY_TO_ONE)
     private final Airport from;
-    @Unique(constraintName = "airports_unique")
+    @Column
     @Relation(type = RelationType.MANY_TO_ONE)
     private final Airport to;
 

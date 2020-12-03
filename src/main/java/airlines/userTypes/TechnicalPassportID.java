@@ -1,16 +1,9 @@
 package airlines.userTypes;
 
-import annotations.CompositeType;
-import annotations.NotNull;
-import annotations.POSIX;
-
 import java.util.Objects;
 import java.util.function.Predicate;
 import java.util.regex.Pattern;
-@CompositeType
 public class TechnicalPassportID {
-    @NotNull
-    @POSIX(regex = REGEX, length = COUNT)
     private final String ID;
 
     private final static Predicate<String> length;

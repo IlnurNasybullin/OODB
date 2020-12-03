@@ -1,21 +1,11 @@
 package airlines.userTypes.geographic;
 
-import annotations.*;
-
 import java.math.BigDecimal;
 import java.math.MathContext;
 import java.util.Objects;
-@CompositeType
 public abstract class Coordinate {
-    @NotNull
     protected final short degrees;
-    @Check(type = CheckType.MORE_AND_EQUAL, expression = @Expression(expression = "0"))
-    @Check(type = CheckType.LESS, expression = @Expression(expression = "60"))
-    @NotNull
     protected final byte minutes;
-    @Check(type = CheckType.MORE_AND_EQUAL, expression = @Expression(expression = "0"))
-    @Check(type = CheckType.LESS, expression = @Expression(expression = "60"))
-    @NotNull
     protected final double seconds;
 
     public static final int DEGREE_TO_MINUTES = 60;

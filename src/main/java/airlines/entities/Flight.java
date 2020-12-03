@@ -8,12 +8,11 @@ import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 @Entity
-@CheckTable(first = @Expression(expression = "${start}"), type = CheckType.LESS, second = @Expression(expression = "{end}"))
-@CheckTable(first = @Expression(expression = "${realStartTime}"), type = CheckType.LESS, second = @Expression(expression = "{realEndTime}"))
 public class Flight {
-    @PrimaryKey
-    @AutoIncrement
+    @ID
+    @Column
     private Long ID;
+    @Column
     @Relation(type = RelationType.MANY_TO_ONE)
     private final Route route;
     @Column
@@ -26,8 +25,10 @@ public class Flight {
     private LocalDateTime realEndTime;
     @Column
     private Boolean successful;
+    @Column
     @Relation(type = RelationType.ONE_TO_ONE)
     private FlightPassport flightPassport;
+    @Column
     @Relation(type = RelationType.MANY_TO_MANY, target = PlainTicket.class)
     private Set<PlainTicket> plainTickets;
 

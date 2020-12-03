@@ -36,4 +36,48 @@ public class ReflectionUtils {
 
         return false;
     }
+
+    public static <T extends Annotation> T getAnnotation(Class<?> tClass, Class<T> annotation) {
+        return getAnnotation(tClass, annotation, new HashSet<>());
+    }
+
+    private static <T extends Annotation> T getAnnotation(Class<?> tClass, Class<T> annotation, Set<Class<?>> annotations) {
+        T an = tClass.getDeclaredAnnotation(annotation);
+        if (an != null) {
+            return an;
+        }
+
+        annotations.add(tClass);
+
+        for (Annotation annot : tClass.getDeclaredAnnotations()) {
+            if (!annotations.contains(annot.annotationType())) {
+                an = getAnnotation(annot.annotationType(), annotation, annotations);
+                if (an != null) {
+                    return an;
+                }
+            }
+        }
+
+        return null;
+    }
+
+    public static <T extends Annotation> T getAnnotation(Field field, Class<T> annotation) {
+        T an = field.getDeclaredAnnotation(annotation);
+        if (an != null) {
+            return an;
+        }
+
+        Set<Class<?>> annotations = new HashSet<>();
+
+        for (Annotation annot : field.getDeclaredAnnotations()) {
+            if (!annotations.contains(annot.annotationType())) {
+                an = getAnnotation(annot.annotationType(), annotation, annotations);
+                if (an != null) {
+                    return an;
+                }
+            }
+        }
+
+        return null;
+    }
 }

@@ -1,16 +1,9 @@
 package airlines.userTypes;
 
-import annotations.CompositeType;
-import annotations.TypeComponent;
-
 import java.util.Objects;
-@CompositeType
 public class FullName {
-    @TypeComponent
     private String familyName;
-    @TypeComponent
     private String name;
-    @TypeComponent
     private String fatherName;
 
     public FullName() { }

@@ -5,16 +5,16 @@ import annotations.*;
 import java.util.*;
 @Entity
 public class FlightPassport {
-    @PrimaryKey
-    @AutoIncrement
+    @ID
+    @Column
     private Long ID;
-    @NotNull
-    @Unique
+    @Column
     private final String flightPassportID;
     @Relation(type = RelationType.MANY_TO_ONE)
     private Airplane airplane;
     @Column
     private String operatedCompany;
+    @Column
     @Relation(type = RelationType.MANY_TO_MANY, target = Staff.class)
     private Set<Staff> staffs;
 
@@ -23,6 +23,7 @@ public class FlightPassport {
     }
 
     public FlightPassport(String flightPassportID) {
+        Objects.requireNonNull(flightPassportID);
         this.flightPassportID = flightPassportID;
         this.staffs = new HashSet<>();
     }

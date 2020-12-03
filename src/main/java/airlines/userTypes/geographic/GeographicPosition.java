@@ -1,24 +1,14 @@
 package airlines.userTypes.geographic;
 
 import airlines.userTypes.metrics.Length;
-import annotations.CompositeType;
-import annotations.NotNull;
-import annotations.TypeComponent;
 
-import java.sql.Types;
 import java.time.ZoneId;
 import java.util.Objects;
-@CompositeType
 public class GeographicPosition {
-    @NotNull
     private final GeographicCoordinates coordinates;
-    @TypeComponent(SQLType = Types.VARCHAR)
     private ZoneId timeZone;
-    @TypeComponent
     private String country;
-    @TypeComponent
     private String city;
-    @TypeComponent
     private Length altitude;
 
     private GeographicPosition() {

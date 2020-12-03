@@ -1,9 +1,9 @@
 package lab_6.graph;
 
-import annotations.*;
+import annotations.ReflectionUtils;
+import annotations.Relation;
 import org.jgrapht.graph.DefaultDirectedGraph;
 
-import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 import java.util.*;
 
@@ -61,7 +61,7 @@ public class GraphModel extends DefaultDirectedGraph<Vertex, Edge> {
         for (Field field: fields) {
             Relation annotation = field.getAnnotation(Relation.class);
             Class<?> targetClass = annotation.target();
-            Class<?> fieldTargetClass = (targetClass == Relation.DEFAULT_TARGET) ?
+            Class<?> fieldTargetClass = (targetClass == Object.class) ?
                     field.getType() : targetClass;
             addEdge(VertexFactory.get(field.getDeclaringClass()), VertexFactory.get(fieldTargetClass), new Edge(annotation.type()));
         }

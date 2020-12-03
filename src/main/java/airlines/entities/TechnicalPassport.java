@@ -1,18 +1,19 @@
 package airlines.entities;
 
 import airlines.userTypes.TechnicalPassportID;
-import annotations.*;
+import annotations.Column;
+import annotations.Entity;
+import annotations.ID;
 
 import java.time.OffsetDateTime;
 import java.util.Objects;
 
 @Entity
 public class TechnicalPassport {
-    @PrimaryKey
-    @AutoIncrement
+    @ID
+    @Column
     private Long ID;
-    @Unique
-    @NotNull
+    @Column
     private final TechnicalPassportID technicalPassportID;
     @Column
     private OffsetDateTime lastCheckDate;
