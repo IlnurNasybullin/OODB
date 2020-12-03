@@ -3,6 +3,7 @@ package airlines.userTypes.geographic;
 import java.math.BigDecimal;
 import java.math.MathContext;
 import java.util.Objects;
+
 public abstract class Coordinate {
     protected final short degrees;
     protected final byte minutes;
