@@ -1,9 +1,9 @@
-package lab_7.database;
+package databaseAnalyzer.database;
 
 import java.lang.reflect.Field;
 import java.util.Objects;
 
-import static lab_7.database.DatabaseStandardSpecification.getStandardName;
+import static databaseAnalyzer.database.DatabaseStandardSpecification.getStandardName;
 
 public class Column {
 

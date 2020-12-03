@@ -1,7 +1,7 @@
 package lab_7;
 
 import analyse.ClassScanner;
-import lab_7.analyzer.DatabaseAnalyzer;
+import databaseAnalyzer.analyzer.DatabaseAnalyzer;
 
 import java.io.IOException;
 import java.net.URI;

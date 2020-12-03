@@ -1,4 +1,4 @@
-package lab_7.database;
+package databaseAnalyzer.database;
 
 import java.util.Locale;
 import java.util.regex.Matcher;

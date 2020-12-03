@@ -1,7 +1,7 @@
-package lab_7.database;
+package databaseAnalyzer.database;
 
 import annotations.*;
-import lab_7.analyzer.TableFactory;
+import databaseAnalyzer.analyzer.TableFactory;
 
 import java.lang.reflect.Field;
 import java.util.Collections;
@@ -9,13 +9,13 @@ import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
-import static lab_7.database.DatabaseStandardSpecification.getStandardName;
+import static databaseAnalyzer.database.DatabaseStandardSpecification.getStandardName;
 
 public class Table {
 
     protected String tableName;
-    protected Set<lab_7.database.Column> idColumns;
-    private Set<lab_7.database.Column> columns;
+    protected Set<databaseAnalyzer.database.Column> idColumns;
+    private Set<databaseAnalyzer.database.Column> columns;
     private Set<ExtendedTable> extendedTables;
 
     protected Table() {}
@@ -34,7 +34,7 @@ public class Table {
         for (Field field : tClass.getDeclaredFields()) {
             ID id = ReflectionUtils.getAnnotation(field, ID.class);
             if (id != null) {
-                lab_7.database.Column column = getColumn(field);
+                databaseAnalyzer.database.Column column = getColumn(field);
                 this.idColumns.add(column);
                 this.columns.add(column);
                 continue;
@@ -65,15 +65,15 @@ public class Table {
         return type == RelationType.ONE_TO_MANY || type == RelationType.MANY_TO_MANY;
     }
 
-    private lab_7.database.Column getColumn(Field field) {
+    private databaseAnalyzer.database.Column getColumn(Field field) {
         return getColumn(field, ReflectionUtils.getAnnotation(field, annotations.Column.class));
     }
 
-    private lab_7.database.Column getColumn(Field field, annotations.Column annotation) {
+    private databaseAnalyzer.database.Column getColumn(Field field, annotations.Column annotation) {
         if (annotation == null) {
             throw new IllegalArgumentException(String.format("%s isn't column", field));
         }
-        return new lab_7.database.Column(field, annotation);
+        return new databaseAnalyzer.database.Column(field, annotation);
     }
 
     private Class<?> getTargetClass(Field field, Relation relation) {
@@ -99,11 +99,11 @@ public class Table {
         return tableName;
     }
 
-    public Set<lab_7.database.Column> getIdColumns() {
+    public Set<databaseAnalyzer.database.Column> getIdColumns() {
         return idColumns;
     }
 
-    public Set<lab_7.database.Column> getColumns() {
+    public Set<databaseAnalyzer.database.Column> getColumns() {
         return columns;
     }
 
@@ -136,17 +136,17 @@ public class Table {
             this.idColumns = getIdColumns(one, two);
         }
 
-        private Set<lab_7.database.Column> getIdColumns(Table one, Table two) {
-            Set<lab_7.database.Column> columns = new HashSet<>(getIdColumns(one));
+        private Set<databaseAnalyzer.database.Column> getIdColumns(Table one, Table two) {
+            Set<databaseAnalyzer.database.Column> columns = new HashSet<>(getIdColumns(one));
             columns.addAll(getIdColumns(two));
 
             return columns;
         }
 
-        private Set<lab_7.database.Column> getIdColumns(Table table) {
-            Set<lab_7.database.Column> columns = new HashSet<>();
-            for (lab_7.database.Column column: table.getIdColumns()) {
-                columns.add(new lab_7.database.Column(String.format("%s_%s", table, column)));
+        private Set<databaseAnalyzer.database.Column> getIdColumns(Table table) {
+            Set<databaseAnalyzer.database.Column> columns = new HashSet<>();
+            for (databaseAnalyzer.database.Column column: table.getIdColumns()) {
+                columns.add(new databaseAnalyzer.database.Column(String.format("%s_%s", table, column)));
             }
             return columns;
         }
@@ -161,12 +161,12 @@ public class Table {
         }
 
         @Override
-        public Set<lab_7.database.Column> getIdColumns() {
+        public Set<databaseAnalyzer.database.Column> getIdColumns() {
             return this.idColumns;
         }
 
         @Override
-        public Set<lab_7.database.Column> getColumns() {
+        public Set<databaseAnalyzer.database.Column> getColumns() {
             return this.idColumns;
         }
 

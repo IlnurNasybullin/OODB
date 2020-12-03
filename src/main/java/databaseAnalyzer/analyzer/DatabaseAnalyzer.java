@@ -1,7 +1,7 @@
-package lab_7.analyzer;
+package databaseAnalyzer.analyzer;
 
-import lab_7.database.Column;
-import lab_7.database.Table;
+import databaseAnalyzer.database.Column;
+import databaseAnalyzer.database.Table;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -29,17 +29,17 @@ public class DatabaseAnalyzer {
         this.tables = createTables(classes);
     }
 
-    public void analyze() throws SQLException {
+    public boolean analyze() throws SQLException {
         Map<String, Set<String>> tablesFromDatabase = getDatabaseTableMap();
         Map<String, Set<String>> tablesFromEntities = getTablesFromEntities();
 
         System.out.println(tablesFromDatabase);
         System.out.println(tablesFromEntities);
-        System.out.println(tablesFromDatabase.equals(tablesFromEntities));
+        return tablesFromDatabase.equals(tablesFromEntities);
     }
 
     private Map<String, Set<String>> getTablesFromEntities() {
-        return tables.stream().collect(Collectors.toMap(Table::getTableName, table -> getColumns(table)));
+        return tables.stream().collect(Collectors.toMap(Table::getTableName, this::getColumns));
     }
 
     private Set<String> getColumns(Table table) {

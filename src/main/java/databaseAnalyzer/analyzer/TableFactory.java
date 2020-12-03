@@ -1,6 +1,6 @@
-package lab_7.analyzer;
+package databaseAnalyzer.analyzer;
 
-import lab_7.database.Table;
+import databaseAnalyzer.database.Table;
 
 import java.util.*;
 
