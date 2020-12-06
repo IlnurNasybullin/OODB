@@ -29,13 +29,47 @@ public class DatabaseAnalyzer {
         this.tables = createTables(classes);
     }
 
-    public boolean analyze() throws SQLException {
+    public boolean containsEntities() throws SQLException {
         Map<String, Set<String>> tablesFromDatabase = getDatabaseTableMap();
         Map<String, Set<String>> tablesFromEntities = getTablesFromEntities();
 
-        System.out.println(tablesFromDatabase);
-        System.out.println(tablesFromEntities);
-        return tablesFromDatabase.equals(tablesFromEntities);
+        return lessOrEqualDatabaseMaps(tablesFromEntities, tablesFromDatabase);
+    }
+
+    private boolean lessOrEqualDatabaseMaps(Map<String, Set<String>> entities, Map<String, Set<String>> database) {
+        if (entities.size() > database.size() || !database.keySet().containsAll(entities.keySet())) {
+            return false;
+        }
+
+        boolean lessOrEqual = true;
+
+        for (Map.Entry<String, Set<String>> entry: entities.entrySet()) {
+            Set<String> columns = entry.getValue();
+            Set<String> databaseColumns = database.get(entry.getKey());
+
+            lessOrEqual = columns.size() <= databaseColumns.size() && databaseColumns.containsAll(columns);
+            if (!lessOrEqual) {
+                break;
+            }
+        }
+
+        return lessOrEqual;
+    }
+
+    public void analyse() throws SQLException {
+        Map<String, Set<String>> tablesFromDatabase = getTablesFromEntities();
+        for (Table table : tables) {
+            System.out.printf("Сущность %s%n", table);
+            String tableName = table.getTableName();
+            if (tablesFromDatabase.containsKey(tableName)) {
+                System.out.println("------------------");
+                Set<String> columns = tablesFromDatabase.get(tableName);
+                for (Column column : table.getColumns()) {
+                    System.out.printf("%s - %s в БД%n", column, columns.contains(column.getColumnName()) ? "присутствует" : "отсутсвует");
+                }
+            }
+            System.out.println();
+        }
     }
 
     private Map<String, Set<String>> getTablesFromEntities() {

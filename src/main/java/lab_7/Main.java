@@ -19,6 +19,7 @@ public class Main {
     public static void main(String[] args) throws IOException, URISyntaxException, SQLException {
         List<Class<?>> classes = new ClassScanner().get(URI.create("airlines/entities"));
         DatabaseAnalyzer analyzer = new DatabaseAnalyzer(classes, DriverManager.getConnection(URL, USER, PASSWORD));
-        analyzer.analyze();
+        boolean contains = analyzer.containsEntities();
+        System.out.println(contains);
     }
 }
