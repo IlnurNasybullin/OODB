@@ -1,15 +1,20 @@
 package airlines.userTypes;
 
+import annotations.TypeComponent;
+import annotations.UserType;
+
 import java.util.Objects;
 import java.util.function.Predicate;
 import java.util.regex.Pattern;
+
+@UserType
 public class AirportICAO {
 
     public final static AirportICAO DEFAULT = new AirportICAO();
 
     public static final int ICAO_LENGTH = 4;
     public static final String REGEX = "[A-Z0-9]{4}";
-
+    @TypeComponent
     private final String ID;
 
     private final static Predicate<String> lengthCheck =
@@ -31,7 +36,7 @@ public class AirportICAO {
         this("0000");
     }
 
-    private AirportICAO(String ID) {
+    public AirportICAO(String ID) {
         this.ID = ID;
     }
 

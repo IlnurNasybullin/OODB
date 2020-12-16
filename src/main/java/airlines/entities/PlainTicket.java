@@ -78,16 +78,24 @@ public class PlainTicket {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         PlainTicket that = (PlainTicket) o;
-        return ticketID.equals(that.ticketID);
+        return Objects.equals(ID, that.ID);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(ticketID);
+        return Objects.hash(ID);
     }
 
     @Override
     public String toString() {
-        return String.format("PlainTicket{ticketID = %s}", ticketID);
+        final StringBuilder sb = new StringBuilder("PlainTicket{");
+        sb.append("\n\t").append("ID=").append(ID);
+        sb.append("\n\tticketID='").append(ticketID).append('\'');
+        sb.append("\n\tticketType=").append(ticketType);
+        sb.append("\n\tcost=").append(cost);
+        sb.append("\n\tplace='").append(place).append('\'');
+        sb.append("\n\tpassenger=").append(passenger);
+        sb.append("\n").append('}');
+        return sb.toString();
     }
 }

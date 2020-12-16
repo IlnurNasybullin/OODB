@@ -61,16 +61,22 @@ public class TechnicalPassport {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         TechnicalPassport that = (TechnicalPassport) o;
-        return Objects.equals(technicalPassportID, that.technicalPassportID);
+        return Objects.equals(ID, that.ID);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(technicalPassportID);
+        return Objects.hash(ID);
     }
 
     @Override
     public String toString() {
-        return String.format("TechnicalPassport{technicalPassportID = %s}", technicalPassportID);
+        final StringBuilder sb = new StringBuilder("TechnicalPassport{");
+        sb.append("\n\t").append("ID=").append(ID);
+        sb.append("\n\ttechnicalPassportID=").append(technicalPassportID);
+        sb.append("\n\tlastCheckDate=").append(lastCheckDate);
+        sb.append("\n\tisReady=").append(isReady);
+        sb.append("\n").append('}');
+        return sb.toString();
     }
 }

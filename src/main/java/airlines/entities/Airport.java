@@ -61,17 +61,23 @@ public class Airport {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Airport that = (Airport) o;
-        return Objects.equals(icaoID, that.icaoID);
+        Airport airport = (Airport) o;
+        return Objects.equals(ID, airport.ID);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(icaoID);
+        return Objects.hash(ID);
     }
 
     @Override
     public String toString() {
-        return String.format("Airport{icaoID = %s}", icaoID);
+        final StringBuilder sb = new StringBuilder("Airport{");
+        sb.append("\n\t").append("ID=").append(ID);
+        sb.append("\n\ticaoID=").append(icaoID);
+        sb.append("\n\tiataID=").append(iataID);
+        sb.append("\n\tposition=").append(position);
+        sb.append("\n").append('}');
+        return sb.toString();
     }
 }

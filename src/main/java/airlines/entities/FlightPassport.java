@@ -65,7 +65,7 @@ public class FlightPassport {
         return this.staffs.add(staff);
     }
 
-    public boolean addStaff(Collection<? extends Staff> staffs) {
+    public boolean addStaffs(Collection<? extends Staff> staffs) {
         return this.staffs.addAll(staffs);
     }
 
@@ -86,16 +86,23 @@ public class FlightPassport {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         FlightPassport that = (FlightPassport) o;
-        return flightPassportID.equals(that.flightPassportID);
+        return Objects.equals(ID, that.ID);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(flightPassportID);
+        return Objects.hash(ID);
     }
 
     @Override
     public String toString() {
-        return String.format("FlightPassport{flightPassportID = %s}", flightPassportID);
+        final StringBuilder sb = new StringBuilder("FlightPassport{");
+        sb.append("\n\t").append("ID=").append(ID);
+        sb.append("\n\tflightPassportID='").append(flightPassportID).append('\'');
+        sb.append("\n\tairplane=").append(airplane);
+        sb.append("\n\toperatedCompany='").append(operatedCompany).append('\'');
+        sb.append("\n\tstaffs=").append(staffs);
+        sb.append("\n").append('}');
+        return sb.toString();
     }
 }

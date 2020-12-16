@@ -1,9 +1,15 @@
 package airlines.userTypes;
 
+import annotations.TypeComponent;
+import annotations.UserType;
+
 import java.util.Objects;
 import java.util.function.Predicate;
 import java.util.regex.Pattern;
+
+@UserType
 public class TechnicalPassportID {
+    @TypeComponent
     private final String ID;
 
     private final static Predicate<String> length;

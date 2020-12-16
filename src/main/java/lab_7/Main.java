@@ -1,7 +1,7 @@
 package lab_7;
 
 import analyse.ClassScanner;
-import databaseAnalyzer.analyzer.DatabaseAnalyzer;
+import analyse.DatabaseAnalyzer;
 
 import java.io.IOException;
 import java.net.URI;
@@ -19,7 +19,8 @@ public class Main {
     public static void main(String[] args) throws IOException, URISyntaxException, SQLException {
         List<Class<?>> classes = new ClassScanner().get(URI.create("airlines/entities"));
         DatabaseAnalyzer analyzer = new DatabaseAnalyzer(classes, DriverManager.getConnection(URL, USER, PASSWORD));
-        boolean contains = analyzer.containsEntities();
-        System.out.println(contains);
+        analyzer.analyse();
     }
+
+
 }

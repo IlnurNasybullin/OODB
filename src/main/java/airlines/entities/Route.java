@@ -31,7 +31,7 @@ public class Route {
         }
     }
 
-    private Route(Airport from, Airport to) {
+    public Route(Airport from, Airport to) {
         this.from = from;
         this.to = to;
     }
@@ -57,17 +57,21 @@ public class Route {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Route route = (Route) o;
-        return Objects.equals(from, route.from) &&
-                Objects.equals(to, route.to);
+        return Objects.equals(ID, route.ID);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(from, to);
+        return Objects.hash(ID);
     }
 
     @Override
     public String toString() {
-        return String.format("Route{from = %s, to = %s}", from, to);
+        final StringBuilder sb = new StringBuilder("Route{");
+        sb.append("\n\t").append("ID=").append(ID);
+        sb.append("\n\tfrom=").append(from);
+        sb.append("\n\tto=").append(to);
+        sb.append("\n").append('}');
+        return sb.toString();
     }
 }

@@ -1,5 +1,9 @@
 package airlines.userTypes.geographic;
 
+import annotations.TypeComponent;
+import annotations.UserType;
+
+@UserType
 public class Latitude extends Coordinate {
 
     transient public static final double MIN_DEGREE = -90d;
@@ -35,6 +39,7 @@ public class Latitude extends Coordinate {
         super();
     }
 
+    @TypeComponent
     private Latitude(double degrees) {
         super(degrees);
     }

@@ -1,4 +1,4 @@
-package databaseAnalyzer.database;
+package database;
 
 import java.util.Locale;
 import java.util.regex.Matcher;
@@ -15,5 +15,9 @@ public class DatabaseStandardSpecification {
         }
 
         return standardName;
+    }
+
+    public static String getStandardName(String userName, String typeName) {
+        return userName.isBlank() ? getStandardName(typeName) : userName;
     }
 }

@@ -52,10 +52,10 @@ public class DBExample {
     }
 
     private static void hardSelect(DatabaseHandler handler) throws SQLException {
-        System.out.println("Start hard select");
+        System.out.println("Start hard selectById");
         hardSelect(handler, json_column);
         hardSelect(handler, jsonb_column);
-        System.out.println("Finish hard select");
+        System.out.println("Finish hard selectById");
     }
 
     private static void hardSelect(DatabaseHandler handler, String column) throws SQLException {
@@ -95,10 +95,10 @@ public class DBExample {
     }
 
     private static void selectTest(DatabaseHandler handler) throws SQLException {
-        System.out.println("Start select");
+        System.out.println("Start selectById");
         select(handler, json_column);
         select(handler, jsonb_column);
-        System.out.println("Finish select");
+        System.out.println("Finish selectById");
     }
 
     private static void select(DatabaseHandler handler, String column) throws SQLException {

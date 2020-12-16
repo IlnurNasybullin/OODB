@@ -1,7 +1,9 @@
 package annotations;
 
 import java.lang.annotation.Annotation;
+import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -67,11 +69,16 @@ public class ReflectionUtils {
             return an;
         }
 
-        Set<Class<?>> annotations = new HashSet<>();
+        return getAnnotation(field.getDeclaredAnnotations(), annotation);
+    }
 
-        for (Annotation annot : field.getDeclaredAnnotations()) {
-            if (!annotations.contains(annot.annotationType())) {
-                an = getAnnotation(annot.annotationType(), annotation, annotations);
+    private static <T extends Annotation> T getAnnotation(Annotation[] annotations, Class<T> annotation) {
+        T an;
+        Set<Class<?>> annotationSet = new HashSet<>();
+
+        for (Annotation annot : annotations) {
+            if (!annotationSet.contains(annot.annotationType())) {
+                an = getAnnotation(annot.annotationType(), annotation, annotationSet);
                 if (an != null) {
                     return an;
                 }
@@ -79,5 +86,23 @@ public class ReflectionUtils {
         }
 
         return null;
+    }
+
+    public static <T extends Annotation> T getAnnotation(Method method, Class<T> annotation) {
+        T an = method.getDeclaredAnnotation(annotation);
+        if (an != null) {
+            return an;
+        }
+
+        return getAnnotation(method.getDeclaredAnnotations(), annotation);
+    }
+
+    public static <T extends Annotation> T getAnnotation(Constructor<?> constructor, Class<T> annotation) {
+        T an = constructor.getDeclaredAnnotation(annotation);
+        if (an != null) {
+            return an;
+        }
+
+        return getAnnotation(constructor.getDeclaredAnnotations(), annotation);
     }
 }

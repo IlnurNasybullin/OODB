@@ -1,7 +1,8 @@
-package databaseAnalyzer.analyzer;
+package analyse;
 
-import databaseAnalyzer.database.Column;
-import databaseAnalyzer.database.Table;
+import database.column.Column;
+import database.table.Table;
+import database.table.TableFactory;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -23,6 +24,7 @@ public class DatabaseAnalyzer {
 
     private final Connection connection;
     private final Set<Table> tables;
+    private Map<String, Set<String>> tablesFromDatabase;
 
     public DatabaseAnalyzer(Collection<Class<?>> classes, Connection connection) {
         this.connection = connection;
@@ -30,7 +32,7 @@ public class DatabaseAnalyzer {
     }
 
     public boolean containsEntities() throws SQLException {
-        Map<String, Set<String>> tablesFromDatabase = getDatabaseTableMap();
+        tablesFromDatabase = getDatabaseTableMap();
         Map<String, Set<String>> tablesFromEntities = getTablesFromEntities();
 
         return lessOrEqualDatabaseMaps(tablesFromEntities, tablesFromDatabase);
@@ -56,16 +58,16 @@ public class DatabaseAnalyzer {
         return lessOrEqual;
     }
 
-    public void analyse() throws SQLException {
-        Map<String, Set<String>> tablesFromDatabase = getTablesFromEntities();
+    public void analyse() {
+        tablesFromDatabase = getTablesFromEntities();
         for (Table table : tables) {
             System.out.printf("Сущность %s%n", table);
-            String tableName = table.getTableName();
+            String tableName = table.getName();
             if (tablesFromDatabase.containsKey(tableName)) {
                 System.out.println("------------------");
                 Set<String> columns = tablesFromDatabase.get(tableName);
-                for (Column column : table.getColumns()) {
-                    System.out.printf("%s - %s в БД%n", column, columns.contains(column.getColumnName()) ? "присутствует" : "отсутсвует");
+                for (Column column : table.getAllColumns()) {
+                    System.out.printf("%s - %s в БД%n", column, columns.contains(column.getName()) ? "присутствует" : "отсутсвует");
                 }
             }
             System.out.println();
@@ -73,11 +75,11 @@ public class DatabaseAnalyzer {
     }
 
     private Map<String, Set<String>> getTablesFromEntities() {
-        return tables.stream().collect(Collectors.toMap(Table::getTableName, this::getColumns));
+        return tables.stream().collect(Collectors.toMap(Table::getName, this::getColumns));
     }
 
     private Set<String> getColumns(Table table) {
-        return table.getColumns().stream().map(Column::getColumnName).collect(Collectors.toSet());
+        return table.getAllColumns().stream().map(Column::getName).collect(Collectors.toSet());
     }
 
     private Map<String, Set<String>> getDatabaseTableMap() throws SQLException {
@@ -111,6 +113,12 @@ public class DatabaseAnalyzer {
     }
 
     private Set<Table> createTables(Collection<Class<?>> classes) {
-        return TableFactory.of(classes);
+        for (Class<?> cl: classes) {
+            try {
+                TableFactory.createOf(cl);
+            } catch (IllegalArgumentException ignored) {}
+        }
+
+        return TableFactory.getTables();
     }
 }

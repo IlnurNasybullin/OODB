@@ -1,14 +1,23 @@
 package airlines.userTypes.geographic;
 
 import airlines.userTypes.metrics.Length;
+import annotations.TypeComponent;
+import annotations.UserType;
 
 import java.time.ZoneId;
 import java.util.Objects;
+
+@UserType
 public class GeographicPosition {
+    @TypeComponent
     private final GeographicCoordinates coordinates;
+    @TypeComponent
     private ZoneId timeZone;
+    @TypeComponent
     private String country;
+    @TypeComponent
     private String city;
+    @TypeComponent
     private Length altitude;
 
     private GeographicPosition() {
@@ -70,6 +79,13 @@ public class GeographicPosition {
 
     @Override
     public String toString() {
-        return String.format("GeographicPosition{coordinates = (%s)}", coordinates);
+        final StringBuilder sb = new StringBuilder("GeographicPosition{");
+        sb.append("\n\t").append("coordinates=").append(coordinates);
+        sb.append("\n\ttimeZone=").append(timeZone);
+        sb.append("\n\tcountry='").append(country).append('\'');
+        sb.append("\n\tcity='").append(city).append('\'');
+        sb.append("\n\taltitude=").append(altitude);
+        sb.append("\n").append('}');
+        return sb.toString();
     }
 }

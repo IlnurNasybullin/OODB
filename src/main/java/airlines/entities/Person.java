@@ -68,18 +68,25 @@ public class Person {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Person)) return false;
+        if (o == null || getClass() != o.getClass()) return false;
         Person person = (Person) o;
-        return passportID.equals(person.passportID);
+        return Objects.equals(ID, person.ID);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(passportID);
+        return Objects.hash(ID);
     }
 
     @Override
     public String toString() {
-        return passportID;
+        final StringBuilder sb = new StringBuilder("Person{");
+        sb.append("\n\t").append("ID=").append(ID);
+        sb.append("\n\tpassportID='").append(passportID).append('\'');
+        sb.append("\n\tfullName=").append(fullName);
+        sb.append("\n\taddress=").append(address);
+        sb.append("\n\tphoneNumber='").append(phoneNumber).append('\'');
+        sb.append("\n").append('}');
+        return sb.toString();
     }
 }

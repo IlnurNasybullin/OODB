@@ -1,5 +1,7 @@
 package airlines.userTypes.geographic;
 
+import annotations.TypeComponent;
+
 import java.math.BigDecimal;
 import java.math.MathContext;
 import java.util.Objects;
@@ -70,6 +72,7 @@ public abstract class Coordinate {
         return seconds;
     }
 
+    @TypeComponent
     public double getFullDegrees() {
         double min = (double) (minutes) + seconds / Coordinate.MINUTES_TO_SECONDS;
         return (double) (degrees) + min / Coordinate.DEGREE_TO_MINUTES;

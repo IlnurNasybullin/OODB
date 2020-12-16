@@ -7,6 +7,7 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
+
 @Entity
 public class Flight {
     @ID
@@ -28,7 +29,6 @@ public class Flight {
     @Column
     @Relation(type = RelationType.ONE_TO_ONE)
     private FlightPassport flightPassport;
-    @Column
     @Relation(type = RelationType.MANY_TO_MANY, target = PlainTicket.class)
     private Set<PlainTicket> plainTickets;
 
@@ -129,6 +129,10 @@ public class Flight {
         return plainTickets.removeAll(tickets);
     }
 
+    public Set<PlainTicket> getPlainTickets() {
+        return Set.copyOf(this.plainTickets);
+    }
+
     public void clearTickets() {
         plainTickets.clear();
     }
@@ -138,16 +142,27 @@ public class Flight {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Flight flight = (Flight) o;
-        return Objects.equals(flightPassport, flight.flightPassport);
+        return Objects.equals(ID, flight.ID);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(flightPassport);
+        return Objects.hash(ID);
     }
 
     @Override
     public String toString() {
-        return String.format("Flight{route = %s}", route);
+        final StringBuilder sb = new StringBuilder("Flight{");
+        sb.append("\n\t").append("ID=").append(ID);
+        sb.append("\n\troute=").append(route);
+        sb.append("\n\tstart=").append(start);
+        sb.append("\n\tend=").append(end);
+        sb.append("\n\trealStartTime=").append(realStartTime);
+        sb.append("\n\trealEndTime=").append(realEndTime);
+        sb.append("\n\tsuccessful=").append(successful);
+        sb.append("\n\tflightPassport=").append(flightPassport);
+        sb.append("\n\tplainTickets=").append(plainTickets);
+        sb.append("\n").append('}');
+        return sb.toString();
     }
 }

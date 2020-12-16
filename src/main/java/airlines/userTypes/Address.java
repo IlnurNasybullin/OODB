@@ -1,14 +1,25 @@
 package airlines.userTypes;
 
+import annotations.TypeComponent;
+import annotations.UserType;
+
 import java.util.Objects;
 
+@UserType
 public class Address {
+    @TypeComponent
     private String country;
+    @TypeComponent
     private String region;
+    @TypeComponent
     private String city;
+    @TypeComponent
     private String street;
+    @TypeComponent
     private String house;
+    @TypeComponent
     private String flat;
+    @TypeComponent
     private String postalCode;
 
     public Address() { }
@@ -41,6 +52,34 @@ public class Address {
         return postalCode;
     }
 
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public void setRegion(String region) {
+        this.region = region;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public void setStreet(String street) {
+        this.street = street;
+    }
+
+    public void setHouse(String house) {
+        this.house = house;
+    }
+
+    public void setFlat(String flat) {
+        this.flat = flat;
+    }
+
+    public void setPostalCode(String postalCode) {
+        this.postalCode = postalCode;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -62,7 +101,15 @@ public class Address {
 
     @Override
     public String toString() {
-        return String.format("Address{country = %s, region = %s, city = %s, street = %s, house = %s, flat = %s, postalCode = %s}",
-                             country, region, city, street, house, flat, postalCode);
+        final StringBuilder sb = new StringBuilder("Address{");
+        sb.append("\n\t").append("country='").append(country).append('\'');
+        sb.append("\n\tregion='").append(region).append('\'');
+        sb.append("\n\tcity='").append(city).append('\'');
+        sb.append("\n\tstreet='").append(street).append('\'');
+        sb.append("\n\thouse='").append(house).append('\'');
+        sb.append("\n\tflat='").append(flat).append('\'');
+        sb.append("\n\tpostalCode='").append(postalCode).append('\'');
+        sb.append("\n").append('}');
+        return sb.toString();
     }
 }

@@ -10,8 +10,12 @@ public class Staff extends Person {
     @Column
     private StaffPosition position;
 
-    protected Staff() {
+    private Staff() {
         super("");
+    }
+
+    public Staff(String passportID) {
+        super(passportID);
     }
 
     public Integer getFlightHours() {
@@ -35,6 +39,15 @@ public class Staff extends Person {
 
     @Override
     public String toString() {
-        return String.format("Staff{passportID = %s}", passportID);
+        final StringBuilder sb = new StringBuilder("Staff{");
+        sb.append("\n\t").append("ID=").append(ID);
+        sb.append("\n\tpassportID='").append(passportID).append('\'');
+        sb.append("\n\tfullName=").append(fullName);
+        sb.append("\n\taddress=").append(address);
+        sb.append("\n\tphoneNumber='").append(phoneNumber).append('\'');
+        sb.append("\n\tflightHours=").append(flightHours);
+        sb.append("\n\tposition=").append(position);
+        sb.append("\n").append('}');
+        return sb.toString();
     }
 }

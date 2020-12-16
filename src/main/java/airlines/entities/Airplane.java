@@ -141,16 +141,27 @@ public class Airplane {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Airplane airplane = (Airplane) o;
-        return registrationNumber.equals(airplane.registrationNumber);
+        return Objects.equals(ID, airplane.ID);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(registrationNumber);
+        return Objects.hash(ID);
     }
 
     @Override
     public String toString() {
-        return String.format("Airplane{registrationNumber = %s}", registrationNumber);
+        final StringBuilder sb = new StringBuilder("Airplane{");
+        sb.append("\n\t").append("ID=").append(ID);
+        sb.append("\n\tregistrationNumber='").append(registrationNumber).append('\'');
+        sb.append("\n\tname='").append(name).append('\'');
+        sb.append("\n\tairlineName='").append(airlineName).append('\'');
+        sb.append("\n\trollingDate=").append(rollingDate);
+        sb.append("\n\tmaidenFlightDate=").append(maidenFlightDate);
+        sb.append("\n\tregistrationDate=").append(registrationDate);
+        sb.append("\n\tnearestOperationDate=").append(nearestOperationDate);
+        sb.append("\n\ttechnicalPassport=").append(technicalPassport);
+        sb.append("\n").append('}');
+        return sb.toString();
     }
 }
