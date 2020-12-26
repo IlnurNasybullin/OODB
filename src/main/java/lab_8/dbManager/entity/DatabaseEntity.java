@@ -342,7 +342,9 @@ public class DatabaseEntity implements Entity {
         Object select = select(entity.getClass(), id);
         for (Column column: table.getAllColumns()) {
             Field field = column.getField();
+            field.setAccessible(true);
             setObject(entity, field, field.get(select));
+            field.setAccessible(false);
         }
 
         refreshExtendedTable(entity, select);

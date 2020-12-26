@@ -1,6 +1,7 @@
 package lab_8;
 
 import airlines.entities.Flight;
+import lab_8.dbManager.EntityManager;
 import lab_8.dbManager.SimpleEntityManager;
 
 import java.util.Collection;
@@ -9,9 +10,9 @@ import java.util.stream.Collectors;
 
 public class RefreshTree {
 
-    private final SimpleEntityManager manager;
+    private final EntityManager manager;
 
-    public RefreshTree(SimpleEntityManager manager) {
+    public RefreshTree(EntityManager manager) {
         this.manager = manager;
     }
 

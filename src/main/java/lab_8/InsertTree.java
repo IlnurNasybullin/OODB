@@ -1,6 +1,7 @@
 package lab_8;
 
 import airlines.entities.*;
+import lab_8.dbManager.EntityManager;
 import lab_8.dbManager.SimpleEntityManager;
 
 import java.util.Collection;
@@ -9,9 +10,9 @@ import java.util.Set;
 
 public class InsertTree {
 
-    private final SimpleEntityManager manager;
+    private final EntityManager manager;
 
-    public InsertTree(SimpleEntityManager manager) {
+    public InsertTree(EntityManager manager) {
         this.manager = manager;
     }
 

@@ -1,14 +1,15 @@
 package lab_8;
 
 import airlines.entities.Flight;
+import lab_8.dbManager.EntityManager;
 import lab_8.dbManager.SimpleEntityManager;
 
 import java.util.Collection;
 
 public class SelectTree {
-    private final SimpleEntityManager manager;
+    private final EntityManager manager;
 
-    public SelectTree(SimpleEntityManager manager) {
+    public SelectTree(EntityManager manager) {
         this.manager = manager;
     }
 

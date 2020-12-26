@@ -1,15 +1,16 @@
 package lab_8;
 
 import airlines.entities.Flight;
+import lab_8.dbManager.EntityManager;
 import lab_8.dbManager.SimpleEntityManager;
 
 import java.util.List;
 
 public class UpdateTree {
 
-    private final SimpleEntityManager manager;
+    private final EntityManager manager;
 
-    public UpdateTree(SimpleEntityManager manager) {
+    public UpdateTree(EntityManager manager) {
         this.manager = manager;
     }
 

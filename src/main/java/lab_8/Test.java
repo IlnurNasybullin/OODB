@@ -1,10 +1,17 @@
 package lab_8;
 
 import airlines.entities.Flight;
+import analyse.ClassScanner;
+import lab_8.dbManager.DatabaseProperties;
+import lab_8.dbManager.EntityManager;
+import lab_8.dbManager.EntityManagerFactory;
 import lab_8.dbManager.type.TypeComponent;
 import lab_8.dbManager.type.TypeFactory;
 import lab_8.generator.FlightRandomGenerator;
 
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.sql.SQLException;
 import java.time.ZoneId;
 import java.util.List;
@@ -15,24 +22,30 @@ public class Test {
     public static final String USER = "postgres";
     public static final String PASSWORD = "password";
 
-    public static void main(String[] args) throws NoSuchFieldException, IllegalAccessException, SQLException {
+    public static void main(String[] args) throws NoSuchFieldException, IllegalAccessException, SQLException, IOException, URISyntaxException {
         registerZoneID();
         List<Flight> flights = new FlightRandomGenerator().next(10);
 
-//        InsertTree insertTest = new InsertTree(manager);
-//        insertTest.insert(flights);
+        List<Class<?>> classes = new ClassScanner().get(URI.create("airlines/entities"));
+        DatabaseProperties databaseProperties = new DatabaseProperties(URL, USER, PASSWORD);
+
+        EntityManager manager = new EntityManagerFactory(databaseProperties, classes).getEntityManager();
+
+
+        InsertTree insertTest = new InsertTree(manager);
+        insertTest.insert(flights);
 
 //        SelectTree selectTest = new SelectTree(manager);
 //        selectTest.select(flights);
 
-//        RefreshTree refreshTest = new RefreshTree(manager);
-//        refreshTest.refresh(flights);
+        RefreshTree refreshTest = new RefreshTree(manager);
+        refreshTest.refresh(flights);
 
 //        DeleteTree deleteTest = new DeleteTree(manager);
 //        deleteTest.delete(flights);
 
-//        UpdateTree updateTest = new UpdateTree(manager);
-//        updateTest.update(flights);
+        UpdateTree updateTest = new UpdateTree(manager);
+        updateTest.update(flights);
     }
 
     private static void registerZoneID() {
